@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">FirebaseQuerys</string>
+    <array name="array">
+        <item>juan</item>
+        <item>pedro</item>
+        <item>ricardo</item>
+        <item>diego</item>
+    </array>
+</resources>

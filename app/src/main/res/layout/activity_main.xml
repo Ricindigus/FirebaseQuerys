@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="vertical">
+
+        <Spinner
+            android:id="@+id/sp_nombres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawSelectorOnTop="true"
+            android:entries="@array/array"
+            />
+
+        <EditText
+            android:id="@+id/edt_dni"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="dni"
+            android:inputType="text"/>
+        <EditText
+            android:id="@+id/edt_nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="nombre"
+            android:inputType="text"/>
+        <EditText
+            android:id="@+id/edt_edad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="edad"
+            android:inputType="number"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/edt_dia"
+                android:layout_width="48dp"
+                android:layout_height="wrap_content"
+                android:hint="dd"
+                android:inputType="number"/>
+            <EditText
+                android:id="@+id/edt_mes"
+                android:layout_width="48dp"
+                android:layout_height="wrap_content"
+                android:hint="mm"
+                android:inputType="number"/>
+            <EditText
+                android:id="@+id/edt_anio"
+                android:layout_width="72dp"
+                android:layout_height="wrap_content"
+                android:hint="yyyy"
+                android:inputType="number"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_enviar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="enivar"/>
+        <Button
+            android:id="@+id/btn_actualizar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="actualizar"/>
+    </LinearLayout>
+
+</LinearLayout>

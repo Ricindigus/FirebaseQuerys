@@ -20,7 +20,7 @@ public class SQLConstantes {
     public static String usuario_local_sede = "sede";
     public static String usuario_local_nombre = "nombre";
 
-    //TABLA USUARIO LOCAL
+    //TABLA CAJAS
     public static String caja_id = "_id";
     public static String caja_cod_barra_caja = "cod_barra_caja";
     public static String caja_id_operativa = "id_operativa";

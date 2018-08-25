@@ -88,6 +88,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="cargar marco"/>
+        <Button
+            android:id="@+id/btn_resumen1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RESUMEN 1"/>
+        <Button
+            android:id="@+id/btn_resumen2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RESUMEN 2"/>
     </LinearLayout>
 
 </LinearLayout>

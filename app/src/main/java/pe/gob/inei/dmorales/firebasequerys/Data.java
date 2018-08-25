@@ -188,6 +188,99 @@ public class Data {
     }
 
 
+    public LocalRes getLocalResumen(String idLocal){
+        LocalRes localRes = null;
+        Cursor cursor = null;
+        int aplicacion;
+        int adicionales;
+
+        try{
+            String[] whereArgs = new String[]{String.valueOf(idLocal),String.valueOf(1)};
+            cursor = sqLiteDatabase.query(SQLConstantes.tablacajas, null, SQLConstantes.WHERE_CLAUSE_ID_LOCAL + " AND " + SQLConstantes.WHERE_CLAUSE_CAJA_TIPO,whereArgs,null,null,null);
+            aplicacion =  cursor.getCount();
+        }finally{
+            if(cursor != null) cursor.close();
+        }
+
+        try{
+            String[] whereArgs = new String[]{String.valueOf(idLocal),String.valueOf(2)};
+            cursor = sqLiteDatabase.query(SQLConstantes.tablacajas, null, SQLConstantes.WHERE_CLAUSE_ID_LOCAL + " AND " + SQLConstantes.WHERE_CLAUSE_CAJA_TIPO,whereArgs,null,null,null);
+            adicionales =  cursor.getCount();
+        }finally{
+            if(cursor != null) cursor.close();
+        }
+
+        try{
+            if(cursor != null) cursor.close();
+            String[] whereArgs = new String[]{String.valueOf(idLocal),String.valueOf(3)};
+            cursor = sqLiteDatabase.query(SQLConstantes.tablacajas, null, SQLConstantes.WHERE_CLAUSE_ID_LOCAL + " AND " + SQLConstantes.WHERE_CLAUSE_CAJA_TIPO,whereArgs,null,null,null);
+            cursor.moveToFirst();
+            localRes = new LocalRes(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_id_operativa)),
+                    cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idsede)),
+                    cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idlocal)),
+                    cursor.getString(cursor.getColumnIndex(SQLConstantes.caja_sede)),
+                    aplicacion,adicionales,1,0,0,0,0,0,0);
+        }finally{
+            if(cursor != null) cursor.close();
+        }
+        return localRes;
+    }
+
+    public ArrayList<LocalRes> getAllCajasLocalResumen(int idLocal){
+        ArrayList<LocalRes> localResArrayList = new ArrayList<LocalRes>();
+        String[] whereArgs = new String[]{String.valueOf(idLocal),"1"};
+        String[] whereArgs1 = new String[]{String.valueOf(idLocal),"2"};
+        String[] whereArgs2 = new String[]{String.valueOf(idLocal),"3"};
+        Cursor cursor = null;
+        Cursor cursor1 = null;
+        Cursor cursor2 = null;
+        try{
+            cursor = sqLiteDatabase.query(SQLConstantes.tablacajas, null, SQLConstantes.WHERE_CLAUSE_ID_LOCAL + " AND " + SQLConstantes.WHERE_CLAUSE_CAJA_TIPO,whereArgs,null,null,null);
+            int aplicacion = cursor.getCount();
+            cursor.moveToNext();
+            LocalRes localRes = new LocalRes();
+            localRes.setId_operativa(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_id)));
+            localRes.setIdsede(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_cod_barra_caja)));
+            localRes.setIdlocal(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_id_operativa)));
+            localRes.setLocal(cursor.getString(cursor.getColumnIndex(SQLConstantes.caja_local)));
+            localRes.setTotal_ap_imprenta(aplicacion);
+            localResArrayList.add(localRes);
+        }finally{
+            if(cursor != null) cursor.close();
+        }
+        return localResArrayList;
+    }
+
+
+    public ArrayList<String> getIdsLocales(){
+        ArrayList<String> locales = new ArrayList<>();
+        String[] whereArgs = new String[]{String.valueOf(3)};
+        Cursor cursor = null;
+        try{
+            cursor = sqLiteDatabase.query(SQLConstantes.tablacajas, null, SQLConstantes.WHERE_CLAUSE_CAJA_TIPO,whereArgs,null,null,null);
+            while (cursor.moveToNext()){
+                locales.add(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idlocal))+"");
+            }
+        }finally{
+            if(cursor != null) cursor.close();
+        }
+        return locales;
+    }
+
+    public int getNroCajasxSede(int idSede,int tipo){
+        int numero = 0;
+        String[] whereArgs = new String[]{String.valueOf(idSede),String.valueOf(tipo)};
+        Cursor cursor = null;
+        try{
+            cursor = sqLiteDatabase.query(SQLConstantes.tablacajas, null, SQLConstantes.WHERE_CLAUSE_ID_SEDE + " AND " + SQLConstantes.WHERE_CLAUSE_CAJA_TIPO,whereArgs,null,null,null);
+            numero = cursor.getCount();
+        }finally{
+            if(cursor != null) cursor.close();
+        }
+        return numero;
+    }
+
+
     public void deleteAllElementosFromTabla(String nombreTabla){
         sqLiteDatabase.execSQL("delete from "+ nombreTabla);
     }

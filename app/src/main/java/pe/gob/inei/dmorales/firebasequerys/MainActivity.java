@@ -39,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
     Button btnEnviar1;
     Button btnEnviar2;
     Button btnEnviar3;
+    Button btnResumen1;
+    Button btnResumen2;
+
 
 
     Button btnActualizar;
@@ -46,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
     Spinner spNombres;
 
     FirebaseFirestore db;
-    ArrayList<Sede> sedes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
         btnEnviar1 = (Button) findViewById(R.id.btn_enviar1);
         btnEnviar2 = (Button) findViewById(R.id.btn_enviar2);
         btnEnviar3 = (Button) findViewById(R.id.btn_enviar3);
+        btnResumen1 = (Button) findViewById(R.id.btn_resumen1);
+        btnResumen2 = (Button) findViewById(R.id.btn_resumen2);
+
 
         db = FirebaseFirestore.getInstance();
 
@@ -111,42 +116,41 @@ public class MainActivity extends AppCompatActivity {
 
 
                 WriteBatch batch = db.batch();
-                batch.set(db.collection("sedes").document(sede1.getIdsede()+""), new SedeMap(sede1.getIdsede(),sede1.getSede()));
-                batch.set(db.collection("sedes").document(sede2.getIdsede()+""), new SedeMap(sede2.getIdsede(),sede2.getSede()));
-                batch.set(db.collection("sedes").document(sede3.getIdsede()+""), new SedeMap(sede3.getIdsede(),sede3.getSede()));
-                batch.set(db.collection("sedes").document(sede4.getIdsede()+""), new SedeMap(sede4.getIdsede(),sede4.getSede()));
-                batch.set(db.collection("sedes").document(sede5.getIdsede()+""), new SedeMap(sede5.getIdsede(),sede5.getSede()));
-                batch.set(db.collection("sedes").document(sede6.getIdsede()+""), new SedeMap(sede6.getIdsede(),sede6.getSede()));
-                batch.set(db.collection("sedes").document(sede7.getIdsede()+""), new SedeMap(sede7.getIdsede(),sede7.getSede()));
-                batch.set(db.collection("sedes").document(sede8.getIdsede()+""), new SedeMap(sede8.getIdsede(),sede8.getSede()));
-                batch.set(db.collection("sedes").document(sede9.getIdsede()+""), new SedeMap(sede9.getIdsede(),sede9.getSede()));
-                batch.set(db.collection("sedes").document(sede10.getIdsede()+""), new SedeMap(sede10.getIdsede(),sede10.getSede()));
-                batch.set(db.collection("sedes").document(sede11.getIdsede()+""), new SedeMap(sede11.getIdsede(),sede11.getSede()));
-                batch.set(db.collection("sedes").document(sede12.getIdsede()+""), new SedeMap(sede12.getIdsede(),sede12.getSede()));
-                batch.set(db.collection("sedes").document(sede13.getIdsede()+""), new SedeMap(sede13.getIdsede(),sede13.getSede()));
-                batch.set(db.collection("sedes").document(sede14.getIdsede()+""), new SedeMap(sede14.getIdsede(),sede14.getSede()));
-                batch.set(db.collection("sedes").document(sede15.getIdsede()+""), new SedeMap(sede15.getIdsede(),sede15.getSede()));
-                batch.set(db.collection("sedes").document(sede16.getIdsede()+""), new SedeMap(sede16.getIdsede(),sede16.getSede()));
-                batch.set(db.collection("sedes").document(sede17.getIdsede()+""), new SedeMap(sede17.getIdsede(),sede17.getSede()));
-                batch.set(db.collection("sedes").document(sede18.getIdsede()+""), new SedeMap(sede18.getIdsede(),sede18.getSede()));
-                batch.set(db.collection("sedes").document(sede19.getIdsede()+""), new SedeMap(sede19.getIdsede(),sede19.getSede()));
-                batch.set(db.collection("sedes").document(sede20.getIdsede()+""), new SedeMap(sede20.getIdsede(),sede20.getSede()));
-                batch.set(db.collection("sedes").document(sede21.getIdsede()+""), new SedeMap(sede21.getIdsede(),sede21.getSede()));
-                batch.set(db.collection("sedes").document(sede22.getIdsede()+""), new SedeMap(sede22.getIdsede(),sede22.getSede()));
-                batch.set(db.collection("sedes").document(sede23.getIdsede()+""), new SedeMap(sede23.getIdsede(),sede23.getSede()));
-                batch.set(db.collection("sedes").document(sede24.getIdsede()+""), new SedeMap(sede24.getIdsede(),sede24.getSede()));
-                batch.set(db.collection("sedes").document(sede25.getIdsede()+""), new SedeMap(sede25.getIdsede(),sede25.getSede()));
-                batch.set(db.collection("sedes").document(sede26.getIdsede()+""), new SedeMap(sede26.getIdsede(),sede26.getSede()));
-                batch.set(db.collection("sedes").document(sede27.getIdsede()+""), new SedeMap(sede27.getIdsede(),sede27.getSede()));
-                batch.set(db.collection("sedes").document(sede28.getIdsede()+""), new SedeMap(sede28.getIdsede(),sede28.getSede()));
-                batch.set(db.collection("sedes").document(sede29.getIdsede()+""), new SedeMap(sede29.getIdsede(),sede29.getSede()));
-                batch.set(db.collection("sedes").document(sede30.getIdsede()+""), new SedeMap(sede30.getIdsede(),sede30.getSede()));
-                batch.set(db.collection("sedes").document(sede31.getIdsede()+""), new SedeMap(sede31.getIdsede(),sede31.getSede()));
-                batch.set(db.collection("sedes").document(sede32.getIdsede()+""), new SedeMap(sede32.getIdsede(),sede32.getSede()));
-                batch.set(db.collection("sedes").document(sede33.getIdsede()+""), new SedeMap(sede33.getIdsede(),sede33.getSede()));
-                batch.set(db.collection("sedes").document(sede34.getIdsede()+""), new SedeMap(sede34.getIdsede(),sede34.getSede()));
-                batch.set(db.collection("sedes").document(sede35.getIdsede()+""), new SedeMap(sede35.getIdsede(),sede35.getSede()));
-
+                batch.set(db.collection("sedes").document(sede1.getIdsede()+""), new SedeMap(sede1.getSede()));
+                batch.set(db.collection("sedes").document(sede2.getIdsede()+""), new SedeMap(sede2.getSede()));
+                batch.set(db.collection("sedes").document(sede3.getIdsede()+""), new SedeMap(sede3.getSede()));
+                batch.set(db.collection("sedes").document(sede4.getIdsede()+""), new SedeMap(sede4.getSede()));
+                batch.set(db.collection("sedes").document(sede5.getIdsede()+""), new SedeMap(sede5.getSede()));
+                batch.set(db.collection("sedes").document(sede6.getIdsede()+""), new SedeMap(sede6.getSede()));
+                batch.set(db.collection("sedes").document(sede7.getIdsede()+""), new SedeMap(sede7.getSede()));
+                batch.set(db.collection("sedes").document(sede8.getIdsede()+""), new SedeMap(sede8.getSede()));
+                batch.set(db.collection("sedes").document(sede9.getIdsede()+""), new SedeMap(sede9.getSede()));
+                batch.set(db.collection("sedes").document(sede10.getIdsede()+""), new SedeMap(sede10.getSede()));
+                batch.set(db.collection("sedes").document(sede11.getIdsede()+""), new SedeMap(sede11.getSede()));
+                batch.set(db.collection("sedes").document(sede12.getIdsede()+""), new SedeMap(sede12.getSede()));
+                batch.set(db.collection("sedes").document(sede13.getIdsede()+""), new SedeMap(sede13.getSede()));
+                batch.set(db.collection("sedes").document(sede14.getIdsede()+""), new SedeMap(sede14.getSede()));
+                batch.set(db.collection("sedes").document(sede15.getIdsede()+""), new SedeMap(sede15.getSede()));
+                batch.set(db.collection("sedes").document(sede16.getIdsede()+""), new SedeMap(sede16.getSede()));
+                batch.set(db.collection("sedes").document(sede17.getIdsede()+""), new SedeMap(sede17.getSede()));
+                batch.set(db.collection("sedes").document(sede18.getIdsede()+""), new SedeMap(sede18.getSede()));
+                batch.set(db.collection("sedes").document(sede19.getIdsede()+""), new SedeMap(sede19.getSede()));
+                batch.set(db.collection("sedes").document(sede20.getIdsede()+""), new SedeMap(sede20.getSede()));
+                batch.set(db.collection("sedes").document(sede21.getIdsede()+""), new SedeMap(sede21.getSede()));
+                batch.set(db.collection("sedes").document(sede22.getIdsede()+""), new SedeMap(sede22.getSede()));
+                batch.set(db.collection("sedes").document(sede23.getIdsede()+""), new SedeMap(sede23.getSede()));
+                batch.set(db.collection("sedes").document(sede24.getIdsede()+""), new SedeMap(sede24.getSede()));
+                batch.set(db.collection("sedes").document(sede25.getIdsede()+""), new SedeMap(sede25.getSede()));
+                batch.set(db.collection("sedes").document(sede26.getIdsede()+""), new SedeMap(sede26.getSede()));
+                batch.set(db.collection("sedes").document(sede27.getIdsede()+""), new SedeMap(sede27.getSede()));
+                batch.set(db.collection("sedes").document(sede28.getIdsede()+""), new SedeMap(sede28.getSede()));
+                batch.set(db.collection("sedes").document(sede29.getIdsede()+""), new SedeMap(sede29.getSede()));
+                batch.set(db.collection("sedes").document(sede30.getIdsede()+""), new SedeMap(sede30.getSede()));
+                batch.set(db.collection("sedes").document(sede31.getIdsede()+""), new SedeMap(sede31.getSede()));
+                batch.set(db.collection("sedes").document(sede32.getIdsede()+""), new SedeMap(sede32.getSede()));
+                batch.set(db.collection("sedes").document(sede33.getIdsede()+""), new SedeMap(sede33.getSede()));
+                batch.set(db.collection("sedes").document(sede34.getIdsede()+""), new SedeMap(sede34.getSede()));
+                batch.set(db.collection("sedes").document(sede35.getIdsede()+""), new SedeMap(sede35.getSede()));
 
                 batch.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -425,222 +429,221 @@ public class MainActivity extends AppCompatActivity {
                 Local local215 = new Local(3,35,42,"I.E. SAN FERNANDO");
 
                 WriteBatch batch = db.batch();
-                batch.set(db.collection("sedes").document(local1.getIdsede()+"").collection("locales").document(local1.getIdlocal()+""), new LocalMap(local1.getIdlocal(),local1.getLocal()));
-                batch.set(db.collection("sedes").document(local1.getIdsede()+"").collection("locales").document(local1.getIdlocal()+""), new LocalMap(local1.getIdlocal(),local1.getLocal()));
-                batch.set(db.collection("sedes").document(local2.getIdsede()+"").collection("locales").document(local2.getIdlocal()+""), new LocalMap(local2.getIdlocal(),local2.getLocal()));
-                batch.set(db.collection("sedes").document(local3.getIdsede()+"").collection("locales").document(local3.getIdlocal()+""), new LocalMap(local3.getIdlocal(),local3.getLocal()));
-                batch.set(db.collection("sedes").document(local4.getIdsede()+"").collection("locales").document(local4.getIdlocal()+""), new LocalMap(local4.getIdlocal(),local4.getLocal()));
-                batch.set(db.collection("sedes").document(local5.getIdsede()+"").collection("locales").document(local5.getIdlocal()+""), new LocalMap(local5.getIdlocal(),local5.getLocal()));
-                batch.set(db.collection("sedes").document(local6.getIdsede()+"").collection("locales").document(local6.getIdlocal()+""), new LocalMap(local6.getIdlocal(),local6.getLocal()));
-                batch.set(db.collection("sedes").document(local7.getIdsede()+"").collection("locales").document(local7.getIdlocal()+""), new LocalMap(local7.getIdlocal(),local7.getLocal()));
-                batch.set(db.collection("sedes").document(local8.getIdsede()+"").collection("locales").document(local8.getIdlocal()+""), new LocalMap(local8.getIdlocal(),local8.getLocal()));
-                batch.set(db.collection("sedes").document(local9.getIdsede()+"").collection("locales").document(local9.getIdlocal()+""), new LocalMap(local9.getIdlocal(),local9.getLocal()));
-                batch.set(db.collection("sedes").document(local10.getIdsede()+"").collection("locales").document(local10.getIdlocal()+""), new LocalMap(local10.getIdlocal(),local10.getLocal()));
-                batch.set(db.collection("sedes").document(local11.getIdsede()+"").collection("locales").document(local11.getIdlocal()+""), new LocalMap(local11.getIdlocal(),local11.getLocal()));
-                batch.set(db.collection("sedes").document(local12.getIdsede()+"").collection("locales").document(local12.getIdlocal()+""), new LocalMap(local12.getIdlocal(),local12.getLocal()));
-                batch.set(db.collection("sedes").document(local13.getIdsede()+"").collection("locales").document(local13.getIdlocal()+""), new LocalMap(local13.getIdlocal(),local13.getLocal()));
-                batch.set(db.collection("sedes").document(local14.getIdsede()+"").collection("locales").document(local14.getIdlocal()+""), new LocalMap(local14.getIdlocal(),local14.getLocal()));
-                batch.set(db.collection("sedes").document(local15.getIdsede()+"").collection("locales").document(local15.getIdlocal()+""), new LocalMap(local15.getIdlocal(),local15.getLocal()));
-                batch.set(db.collection("sedes").document(local16.getIdsede()+"").collection("locales").document(local16.getIdlocal()+""), new LocalMap(local16.getIdlocal(),local16.getLocal()));
-                batch.set(db.collection("sedes").document(local17.getIdsede()+"").collection("locales").document(local17.getIdlocal()+""), new LocalMap(local17.getIdlocal(),local17.getLocal()));
-                batch.set(db.collection("sedes").document(local18.getIdsede()+"").collection("locales").document(local18.getIdlocal()+""), new LocalMap(local18.getIdlocal(),local18.getLocal()));
-                batch.set(db.collection("sedes").document(local19.getIdsede()+"").collection("locales").document(local19.getIdlocal()+""), new LocalMap(local19.getIdlocal(),local19.getLocal()));
-                batch.set(db.collection("sedes").document(local20.getIdsede()+"").collection("locales").document(local20.getIdlocal()+""), new LocalMap(local20.getIdlocal(),local20.getLocal()));
-                batch.set(db.collection("sedes").document(local21.getIdsede()+"").collection("locales").document(local21.getIdlocal()+""), new LocalMap(local21.getIdlocal(),local21.getLocal()));
-                batch.set(db.collection("sedes").document(local22.getIdsede()+"").collection("locales").document(local22.getIdlocal()+""), new LocalMap(local22.getIdlocal(),local22.getLocal()));
-                batch.set(db.collection("sedes").document(local23.getIdsede()+"").collection("locales").document(local23.getIdlocal()+""), new LocalMap(local23.getIdlocal(),local23.getLocal()));
-                batch.set(db.collection("sedes").document(local24.getIdsede()+"").collection("locales").document(local24.getIdlocal()+""), new LocalMap(local24.getIdlocal(),local24.getLocal()));
-                batch.set(db.collection("sedes").document(local25.getIdsede()+"").collection("locales").document(local25.getIdlocal()+""), new LocalMap(local25.getIdlocal(),local25.getLocal()));
-                batch.set(db.collection("sedes").document(local26.getIdsede()+"").collection("locales").document(local26.getIdlocal()+""), new LocalMap(local26.getIdlocal(),local26.getLocal()));
-                batch.set(db.collection("sedes").document(local27.getIdsede()+"").collection("locales").document(local27.getIdlocal()+""), new LocalMap(local27.getIdlocal(),local27.getLocal()));
-                batch.set(db.collection("sedes").document(local28.getIdsede()+"").collection("locales").document(local28.getIdlocal()+""), new LocalMap(local28.getIdlocal(),local28.getLocal()));
-                batch.set(db.collection("sedes").document(local29.getIdsede()+"").collection("locales").document(local29.getIdlocal()+""), new LocalMap(local29.getIdlocal(),local29.getLocal()));
-                batch.set(db.collection("sedes").document(local30.getIdsede()+"").collection("locales").document(local30.getIdlocal()+""), new LocalMap(local30.getIdlocal(),local30.getLocal()));
-                batch.set(db.collection("sedes").document(local31.getIdsede()+"").collection("locales").document(local31.getIdlocal()+""), new LocalMap(local31.getIdlocal(),local31.getLocal()));
-                batch.set(db.collection("sedes").document(local32.getIdsede()+"").collection("locales").document(local32.getIdlocal()+""), new LocalMap(local32.getIdlocal(),local32.getLocal()));
-                batch.set(db.collection("sedes").document(local33.getIdsede()+"").collection("locales").document(local33.getIdlocal()+""), new LocalMap(local33.getIdlocal(),local33.getLocal()));
-                batch.set(db.collection("sedes").document(local34.getIdsede()+"").collection("locales").document(local34.getIdlocal()+""), new LocalMap(local34.getIdlocal(),local34.getLocal()));
-                batch.set(db.collection("sedes").document(local35.getIdsede()+"").collection("locales").document(local35.getIdlocal()+""), new LocalMap(local35.getIdlocal(),local35.getLocal()));
-                batch.set(db.collection("sedes").document(local36.getIdsede()+"").collection("locales").document(local36.getIdlocal()+""), new LocalMap(local36.getIdlocal(),local36.getLocal()));
-                batch.set(db.collection("sedes").document(local37.getIdsede()+"").collection("locales").document(local37.getIdlocal()+""), new LocalMap(local37.getIdlocal(),local37.getLocal()));
-                batch.set(db.collection("sedes").document(local38.getIdsede()+"").collection("locales").document(local38.getIdlocal()+""), new LocalMap(local38.getIdlocal(),local38.getLocal()));
-                batch.set(db.collection("sedes").document(local39.getIdsede()+"").collection("locales").document(local39.getIdlocal()+""), new LocalMap(local39.getIdlocal(),local39.getLocal()));
-                batch.set(db.collection("sedes").document(local40.getIdsede()+"").collection("locales").document(local40.getIdlocal()+""), new LocalMap(local40.getIdlocal(),local40.getLocal()));
-                batch.set(db.collection("sedes").document(local41.getIdsede()+"").collection("locales").document(local41.getIdlocal()+""), new LocalMap(local41.getIdlocal(),local41.getLocal()));
-                batch.set(db.collection("sedes").document(local42.getIdsede()+"").collection("locales").document(local42.getIdlocal()+""), new LocalMap(local42.getIdlocal(),local42.getLocal()));
-                batch.set(db.collection("sedes").document(local43.getIdsede()+"").collection("locales").document(local43.getIdlocal()+""), new LocalMap(local43.getIdlocal(),local43.getLocal()));
-                batch.set(db.collection("sedes").document(local44.getIdsede()+"").collection("locales").document(local44.getIdlocal()+""), new LocalMap(local44.getIdlocal(),local44.getLocal()));
-                batch.set(db.collection("sedes").document(local45.getIdsede()+"").collection("locales").document(local45.getIdlocal()+""), new LocalMap(local45.getIdlocal(),local45.getLocal()));
-                batch.set(db.collection("sedes").document(local46.getIdsede()+"").collection("locales").document(local46.getIdlocal()+""), new LocalMap(local46.getIdlocal(),local46.getLocal()));
-                batch.set(db.collection("sedes").document(local47.getIdsede()+"").collection("locales").document(local47.getIdlocal()+""), new LocalMap(local47.getIdlocal(),local47.getLocal()));
-                batch.set(db.collection("sedes").document(local48.getIdsede()+"").collection("locales").document(local48.getIdlocal()+""), new LocalMap(local48.getIdlocal(),local48.getLocal()));
-                batch.set(db.collection("sedes").document(local49.getIdsede()+"").collection("locales").document(local49.getIdlocal()+""), new LocalMap(local49.getIdlocal(),local49.getLocal()));
-                batch.set(db.collection("sedes").document(local50.getIdsede()+"").collection("locales").document(local50.getIdlocal()+""), new LocalMap(local50.getIdlocal(),local50.getLocal()));
-                batch.set(db.collection("sedes").document(local51.getIdsede()+"").collection("locales").document(local51.getIdlocal()+""), new LocalMap(local51.getIdlocal(),local51.getLocal()));
-                batch.set(db.collection("sedes").document(local52.getIdsede()+"").collection("locales").document(local52.getIdlocal()+""), new LocalMap(local52.getIdlocal(),local52.getLocal()));
-                batch.set(db.collection("sedes").document(local53.getIdsede()+"").collection("locales").document(local53.getIdlocal()+""), new LocalMap(local53.getIdlocal(),local53.getLocal()));
-                batch.set(db.collection("sedes").document(local54.getIdsede()+"").collection("locales").document(local54.getIdlocal()+""), new LocalMap(local54.getIdlocal(),local54.getLocal()));
-                batch.set(db.collection("sedes").document(local55.getIdsede()+"").collection("locales").document(local55.getIdlocal()+""), new LocalMap(local55.getIdlocal(),local55.getLocal()));
-                batch.set(db.collection("sedes").document(local56.getIdsede()+"").collection("locales").document(local56.getIdlocal()+""), new LocalMap(local56.getIdlocal(),local56.getLocal()));
-                batch.set(db.collection("sedes").document(local57.getIdsede()+"").collection("locales").document(local57.getIdlocal()+""), new LocalMap(local57.getIdlocal(),local57.getLocal()));
-                batch.set(db.collection("sedes").document(local58.getIdsede()+"").collection("locales").document(local58.getIdlocal()+""), new LocalMap(local58.getIdlocal(),local58.getLocal()));
-                batch.set(db.collection("sedes").document(local59.getIdsede()+"").collection("locales").document(local59.getIdlocal()+""), new LocalMap(local59.getIdlocal(),local59.getLocal()));
-                batch.set(db.collection("sedes").document(local60.getIdsede()+"").collection("locales").document(local60.getIdlocal()+""), new LocalMap(local60.getIdlocal(),local60.getLocal()));
-                batch.set(db.collection("sedes").document(local61.getIdsede()+"").collection("locales").document(local61.getIdlocal()+""), new LocalMap(local61.getIdlocal(),local61.getLocal()));
-                batch.set(db.collection("sedes").document(local62.getIdsede()+"").collection("locales").document(local62.getIdlocal()+""), new LocalMap(local62.getIdlocal(),local62.getLocal()));
-                batch.set(db.collection("sedes").document(local63.getIdsede()+"").collection("locales").document(local63.getIdlocal()+""), new LocalMap(local63.getIdlocal(),local63.getLocal()));
-                batch.set(db.collection("sedes").document(local64.getIdsede()+"").collection("locales").document(local64.getIdlocal()+""), new LocalMap(local64.getIdlocal(),local64.getLocal()));
-                batch.set(db.collection("sedes").document(local65.getIdsede()+"").collection("locales").document(local65.getIdlocal()+""), new LocalMap(local65.getIdlocal(),local65.getLocal()));
-                batch.set(db.collection("sedes").document(local66.getIdsede()+"").collection("locales").document(local66.getIdlocal()+""), new LocalMap(local66.getIdlocal(),local66.getLocal()));
-                batch.set(db.collection("sedes").document(local67.getIdsede()+"").collection("locales").document(local67.getIdlocal()+""), new LocalMap(local67.getIdlocal(),local67.getLocal()));
-                batch.set(db.collection("sedes").document(local68.getIdsede()+"").collection("locales").document(local68.getIdlocal()+""), new LocalMap(local68.getIdlocal(),local68.getLocal()));
-                batch.set(db.collection("sedes").document(local69.getIdsede()+"").collection("locales").document(local69.getIdlocal()+""), new LocalMap(local69.getIdlocal(),local69.getLocal()));
-                batch.set(db.collection("sedes").document(local70.getIdsede()+"").collection("locales").document(local70.getIdlocal()+""), new LocalMap(local70.getIdlocal(),local70.getLocal()));
-                batch.set(db.collection("sedes").document(local71.getIdsede()+"").collection("locales").document(local71.getIdlocal()+""), new LocalMap(local71.getIdlocal(),local71.getLocal()));
-                batch.set(db.collection("sedes").document(local72.getIdsede()+"").collection("locales").document(local72.getIdlocal()+""), new LocalMap(local72.getIdlocal(),local72.getLocal()));
-                batch.set(db.collection("sedes").document(local73.getIdsede()+"").collection("locales").document(local73.getIdlocal()+""), new LocalMap(local73.getIdlocal(),local73.getLocal()));
-                batch.set(db.collection("sedes").document(local74.getIdsede()+"").collection("locales").document(local74.getIdlocal()+""), new LocalMap(local74.getIdlocal(),local74.getLocal()));
-                batch.set(db.collection("sedes").document(local75.getIdsede()+"").collection("locales").document(local75.getIdlocal()+""), new LocalMap(local75.getIdlocal(),local75.getLocal()));
-                batch.set(db.collection("sedes").document(local76.getIdsede()+"").collection("locales").document(local76.getIdlocal()+""), new LocalMap(local76.getIdlocal(),local76.getLocal()));
-                batch.set(db.collection("sedes").document(local77.getIdsede()+"").collection("locales").document(local77.getIdlocal()+""), new LocalMap(local77.getIdlocal(),local77.getLocal()));
-                batch.set(db.collection("sedes").document(local78.getIdsede()+"").collection("locales").document(local78.getIdlocal()+""), new LocalMap(local78.getIdlocal(),local78.getLocal()));
-                batch.set(db.collection("sedes").document(local79.getIdsede()+"").collection("locales").document(local79.getIdlocal()+""), new LocalMap(local79.getIdlocal(),local79.getLocal()));
-                batch.set(db.collection("sedes").document(local80.getIdsede()+"").collection("locales").document(local80.getIdlocal()+""), new LocalMap(local80.getIdlocal(),local80.getLocal()));
-                batch.set(db.collection("sedes").document(local81.getIdsede()+"").collection("locales").document(local81.getIdlocal()+""), new LocalMap(local81.getIdlocal(),local81.getLocal()));
-                batch.set(db.collection("sedes").document(local82.getIdsede()+"").collection("locales").document(local82.getIdlocal()+""), new LocalMap(local82.getIdlocal(),local82.getLocal()));
-                batch.set(db.collection("sedes").document(local83.getIdsede()+"").collection("locales").document(local83.getIdlocal()+""), new LocalMap(local83.getIdlocal(),local83.getLocal()));
-                batch.set(db.collection("sedes").document(local84.getIdsede()+"").collection("locales").document(local84.getIdlocal()+""), new LocalMap(local84.getIdlocal(),local84.getLocal()));
-                batch.set(db.collection("sedes").document(local85.getIdsede()+"").collection("locales").document(local85.getIdlocal()+""), new LocalMap(local85.getIdlocal(),local85.getLocal()));
-                batch.set(db.collection("sedes").document(local86.getIdsede()+"").collection("locales").document(local86.getIdlocal()+""), new LocalMap(local86.getIdlocal(),local86.getLocal()));
-                batch.set(db.collection("sedes").document(local87.getIdsede()+"").collection("locales").document(local87.getIdlocal()+""), new LocalMap(local87.getIdlocal(),local87.getLocal()));
-                batch.set(db.collection("sedes").document(local88.getIdsede()+"").collection("locales").document(local88.getIdlocal()+""), new LocalMap(local88.getIdlocal(),local88.getLocal()));
-                batch.set(db.collection("sedes").document(local89.getIdsede()+"").collection("locales").document(local89.getIdlocal()+""), new LocalMap(local89.getIdlocal(),local89.getLocal()));
-                batch.set(db.collection("sedes").document(local90.getIdsede()+"").collection("locales").document(local90.getIdlocal()+""), new LocalMap(local90.getIdlocal(),local90.getLocal()));
-                batch.set(db.collection("sedes").document(local91.getIdsede()+"").collection("locales").document(local91.getIdlocal()+""), new LocalMap(local91.getIdlocal(),local91.getLocal()));
-                batch.set(db.collection("sedes").document(local92.getIdsede()+"").collection("locales").document(local92.getIdlocal()+""), new LocalMap(local92.getIdlocal(),local92.getLocal()));
-                batch.set(db.collection("sedes").document(local93.getIdsede()+"").collection("locales").document(local93.getIdlocal()+""), new LocalMap(local93.getIdlocal(),local93.getLocal()));
-                batch.set(db.collection("sedes").document(local94.getIdsede()+"").collection("locales").document(local94.getIdlocal()+""), new LocalMap(local94.getIdlocal(),local94.getLocal()));
-                batch.set(db.collection("sedes").document(local95.getIdsede()+"").collection("locales").document(local95.getIdlocal()+""), new LocalMap(local95.getIdlocal(),local95.getLocal()));
-                batch.set(db.collection("sedes").document(local96.getIdsede()+"").collection("locales").document(local96.getIdlocal()+""), new LocalMap(local96.getIdlocal(),local96.getLocal()));
-                batch.set(db.collection("sedes").document(local97.getIdsede()+"").collection("locales").document(local97.getIdlocal()+""), new LocalMap(local97.getIdlocal(),local97.getLocal()));
-                batch.set(db.collection("sedes").document(local98.getIdsede()+"").collection("locales").document(local98.getIdlocal()+""), new LocalMap(local98.getIdlocal(),local98.getLocal()));
-                batch.set(db.collection("sedes").document(local99.getIdsede()+"").collection("locales").document(local99.getIdlocal()+""), new LocalMap(local99.getIdlocal(),local99.getLocal()));
-                batch.set(db.collection("sedes").document(local100.getIdsede()+"").collection("locales").document(local100.getIdlocal()+""), new LocalMap(local100.getIdlocal(),local100.getLocal()));
-                batch.set(db.collection("sedes").document(local101.getIdsede()+"").collection("locales").document(local101.getIdlocal()+""), new LocalMap(local101.getIdlocal(),local101.getLocal()));
-                batch.set(db.collection("sedes").document(local102.getIdsede()+"").collection("locales").document(local102.getIdlocal()+""), new LocalMap(local102.getIdlocal(),local102.getLocal()));
-                batch.set(db.collection("sedes").document(local103.getIdsede()+"").collection("locales").document(local103.getIdlocal()+""), new LocalMap(local103.getIdlocal(),local103.getLocal()));
-                batch.set(db.collection("sedes").document(local104.getIdsede()+"").collection("locales").document(local104.getIdlocal()+""), new LocalMap(local104.getIdlocal(),local104.getLocal()));
-                batch.set(db.collection("sedes").document(local105.getIdsede()+"").collection("locales").document(local105.getIdlocal()+""), new LocalMap(local105.getIdlocal(),local105.getLocal()));
-                batch.set(db.collection("sedes").document(local106.getIdsede()+"").collection("locales").document(local106.getIdlocal()+""), new LocalMap(local106.getIdlocal(),local106.getLocal()));
-                batch.set(db.collection("sedes").document(local107.getIdsede()+"").collection("locales").document(local107.getIdlocal()+""), new LocalMap(local107.getIdlocal(),local107.getLocal()));
-                batch.set(db.collection("sedes").document(local108.getIdsede()+"").collection("locales").document(local108.getIdlocal()+""), new LocalMap(local108.getIdlocal(),local108.getLocal()));
-                batch.set(db.collection("sedes").document(local109.getIdsede()+"").collection("locales").document(local109.getIdlocal()+""), new LocalMap(local109.getIdlocal(),local109.getLocal()));
-                batch.set(db.collection("sedes").document(local110.getIdsede()+"").collection("locales").document(local110.getIdlocal()+""), new LocalMap(local110.getIdlocal(),local110.getLocal()));
-                batch.set(db.collection("sedes").document(local111.getIdsede()+"").collection("locales").document(local111.getIdlocal()+""), new LocalMap(local111.getIdlocal(),local111.getLocal()));
-                batch.set(db.collection("sedes").document(local112.getIdsede()+"").collection("locales").document(local112.getIdlocal()+""), new LocalMap(local112.getIdlocal(),local112.getLocal()));
-                batch.set(db.collection("sedes").document(local113.getIdsede()+"").collection("locales").document(local113.getIdlocal()+""), new LocalMap(local113.getIdlocal(),local113.getLocal()));
-                batch.set(db.collection("sedes").document(local114.getIdsede()+"").collection("locales").document(local114.getIdlocal()+""), new LocalMap(local114.getIdlocal(),local114.getLocal()));
-                batch.set(db.collection("sedes").document(local115.getIdsede()+"").collection("locales").document(local115.getIdlocal()+""), new LocalMap(local115.getIdlocal(),local115.getLocal()));
-                batch.set(db.collection("sedes").document(local116.getIdsede()+"").collection("locales").document(local116.getIdlocal()+""), new LocalMap(local116.getIdlocal(),local116.getLocal()));
-                batch.set(db.collection("sedes").document(local117.getIdsede()+"").collection("locales").document(local117.getIdlocal()+""), new LocalMap(local117.getIdlocal(),local117.getLocal()));
-                batch.set(db.collection("sedes").document(local118.getIdsede()+"").collection("locales").document(local118.getIdlocal()+""), new LocalMap(local118.getIdlocal(),local118.getLocal()));
-                batch.set(db.collection("sedes").document(local119.getIdsede()+"").collection("locales").document(local119.getIdlocal()+""), new LocalMap(local119.getIdlocal(),local119.getLocal()));
-                batch.set(db.collection("sedes").document(local120.getIdsede()+"").collection("locales").document(local120.getIdlocal()+""), new LocalMap(local120.getIdlocal(),local120.getLocal()));
-                batch.set(db.collection("sedes").document(local121.getIdsede()+"").collection("locales").document(local121.getIdlocal()+""), new LocalMap(local121.getIdlocal(),local121.getLocal()));
-                batch.set(db.collection("sedes").document(local122.getIdsede()+"").collection("locales").document(local122.getIdlocal()+""), new LocalMap(local122.getIdlocal(),local122.getLocal()));
-                batch.set(db.collection("sedes").document(local123.getIdsede()+"").collection("locales").document(local123.getIdlocal()+""), new LocalMap(local123.getIdlocal(),local123.getLocal()));
-                batch.set(db.collection("sedes").document(local124.getIdsede()+"").collection("locales").document(local124.getIdlocal()+""), new LocalMap(local124.getIdlocal(),local124.getLocal()));
-                batch.set(db.collection("sedes").document(local125.getIdsede()+"").collection("locales").document(local125.getIdlocal()+""), new LocalMap(local125.getIdlocal(),local125.getLocal()));
-                batch.set(db.collection("sedes").document(local126.getIdsede()+"").collection("locales").document(local126.getIdlocal()+""), new LocalMap(local126.getIdlocal(),local126.getLocal()));
-                batch.set(db.collection("sedes").document(local127.getIdsede()+"").collection("locales").document(local127.getIdlocal()+""), new LocalMap(local127.getIdlocal(),local127.getLocal()));
-                batch.set(db.collection("sedes").document(local128.getIdsede()+"").collection("locales").document(local128.getIdlocal()+""), new LocalMap(local128.getIdlocal(),local128.getLocal()));
-                batch.set(db.collection("sedes").document(local129.getIdsede()+"").collection("locales").document(local129.getIdlocal()+""), new LocalMap(local129.getIdlocal(),local129.getLocal()));
-                batch.set(db.collection("sedes").document(local130.getIdsede()+"").collection("locales").document(local130.getIdlocal()+""), new LocalMap(local130.getIdlocal(),local130.getLocal()));
-                batch.set(db.collection("sedes").document(local131.getIdsede()+"").collection("locales").document(local131.getIdlocal()+""), new LocalMap(local131.getIdlocal(),local131.getLocal()));
-                batch.set(db.collection("sedes").document(local132.getIdsede()+"").collection("locales").document(local132.getIdlocal()+""), new LocalMap(local132.getIdlocal(),local132.getLocal()));
-                batch.set(db.collection("sedes").document(local133.getIdsede()+"").collection("locales").document(local133.getIdlocal()+""), new LocalMap(local133.getIdlocal(),local133.getLocal()));
-                batch.set(db.collection("sedes").document(local134.getIdsede()+"").collection("locales").document(local134.getIdlocal()+""), new LocalMap(local134.getIdlocal(),local134.getLocal()));
-                batch.set(db.collection("sedes").document(local135.getIdsede()+"").collection("locales").document(local135.getIdlocal()+""), new LocalMap(local135.getIdlocal(),local135.getLocal()));
-                batch.set(db.collection("sedes").document(local136.getIdsede()+"").collection("locales").document(local136.getIdlocal()+""), new LocalMap(local136.getIdlocal(),local136.getLocal()));
-                batch.set(db.collection("sedes").document(local137.getIdsede()+"").collection("locales").document(local137.getIdlocal()+""), new LocalMap(local137.getIdlocal(),local137.getLocal()));
-                batch.set(db.collection("sedes").document(local138.getIdsede()+"").collection("locales").document(local138.getIdlocal()+""), new LocalMap(local138.getIdlocal(),local138.getLocal()));
-                batch.set(db.collection("sedes").document(local139.getIdsede()+"").collection("locales").document(local139.getIdlocal()+""), new LocalMap(local139.getIdlocal(),local139.getLocal()));
-                batch.set(db.collection("sedes").document(local140.getIdsede()+"").collection("locales").document(local140.getIdlocal()+""), new LocalMap(local140.getIdlocal(),local140.getLocal()));
-                batch.set(db.collection("sedes").document(local141.getIdsede()+"").collection("locales").document(local141.getIdlocal()+""), new LocalMap(local141.getIdlocal(),local141.getLocal()));
-                batch.set(db.collection("sedes").document(local142.getIdsede()+"").collection("locales").document(local142.getIdlocal()+""), new LocalMap(local142.getIdlocal(),local142.getLocal()));
-                batch.set(db.collection("sedes").document(local143.getIdsede()+"").collection("locales").document(local143.getIdlocal()+""), new LocalMap(local143.getIdlocal(),local143.getLocal()));
-                batch.set(db.collection("sedes").document(local144.getIdsede()+"").collection("locales").document(local144.getIdlocal()+""), new LocalMap(local144.getIdlocal(),local144.getLocal()));
-                batch.set(db.collection("sedes").document(local145.getIdsede()+"").collection("locales").document(local145.getIdlocal()+""), new LocalMap(local145.getIdlocal(),local145.getLocal()));
-                batch.set(db.collection("sedes").document(local146.getIdsede()+"").collection("locales").document(local146.getIdlocal()+""), new LocalMap(local146.getIdlocal(),local146.getLocal()));
-                batch.set(db.collection("sedes").document(local147.getIdsede()+"").collection("locales").document(local147.getIdlocal()+""), new LocalMap(local147.getIdlocal(),local147.getLocal()));
-                batch.set(db.collection("sedes").document(local148.getIdsede()+"").collection("locales").document(local148.getIdlocal()+""), new LocalMap(local148.getIdlocal(),local148.getLocal()));
-                batch.set(db.collection("sedes").document(local149.getIdsede()+"").collection("locales").document(local149.getIdlocal()+""), new LocalMap(local149.getIdlocal(),local149.getLocal()));
-                batch.set(db.collection("sedes").document(local150.getIdsede()+"").collection("locales").document(local150.getIdlocal()+""), new LocalMap(local150.getIdlocal(),local150.getLocal()));
-                batch.set(db.collection("sedes").document(local151.getIdsede()+"").collection("locales").document(local151.getIdlocal()+""), new LocalMap(local151.getIdlocal(),local151.getLocal()));
-                batch.set(db.collection("sedes").document(local152.getIdsede()+"").collection("locales").document(local152.getIdlocal()+""), new LocalMap(local152.getIdlocal(),local152.getLocal()));
-                batch.set(db.collection("sedes").document(local153.getIdsede()+"").collection("locales").document(local153.getIdlocal()+""), new LocalMap(local153.getIdlocal(),local153.getLocal()));
-                batch.set(db.collection("sedes").document(local154.getIdsede()+"").collection("locales").document(local154.getIdlocal()+""), new LocalMap(local154.getIdlocal(),local154.getLocal()));
-                batch.set(db.collection("sedes").document(local155.getIdsede()+"").collection("locales").document(local155.getIdlocal()+""), new LocalMap(local155.getIdlocal(),local155.getLocal()));
-                batch.set(db.collection("sedes").document(local156.getIdsede()+"").collection("locales").document(local156.getIdlocal()+""), new LocalMap(local156.getIdlocal(),local156.getLocal()));
-                batch.set(db.collection("sedes").document(local157.getIdsede()+"").collection("locales").document(local157.getIdlocal()+""), new LocalMap(local157.getIdlocal(),local157.getLocal()));
-                batch.set(db.collection("sedes").document(local158.getIdsede()+"").collection("locales").document(local158.getIdlocal()+""), new LocalMap(local158.getIdlocal(),local158.getLocal()));
-                batch.set(db.collection("sedes").document(local159.getIdsede()+"").collection("locales").document(local159.getIdlocal()+""), new LocalMap(local159.getIdlocal(),local159.getLocal()));
-                batch.set(db.collection("sedes").document(local160.getIdsede()+"").collection("locales").document(local160.getIdlocal()+""), new LocalMap(local160.getIdlocal(),local160.getLocal()));
-                batch.set(db.collection("sedes").document(local161.getIdsede()+"").collection("locales").document(local161.getIdlocal()+""), new LocalMap(local161.getIdlocal(),local161.getLocal()));
-                batch.set(db.collection("sedes").document(local162.getIdsede()+"").collection("locales").document(local162.getIdlocal()+""), new LocalMap(local162.getIdlocal(),local162.getLocal()));
-                batch.set(db.collection("sedes").document(local163.getIdsede()+"").collection("locales").document(local163.getIdlocal()+""), new LocalMap(local163.getIdlocal(),local163.getLocal()));
-                batch.set(db.collection("sedes").document(local164.getIdsede()+"").collection("locales").document(local164.getIdlocal()+""), new LocalMap(local164.getIdlocal(),local164.getLocal()));
-                batch.set(db.collection("sedes").document(local165.getIdsede()+"").collection("locales").document(local165.getIdlocal()+""), new LocalMap(local165.getIdlocal(),local165.getLocal()));
-                batch.set(db.collection("sedes").document(local166.getIdsede()+"").collection("locales").document(local166.getIdlocal()+""), new LocalMap(local166.getIdlocal(),local166.getLocal()));
-                batch.set(db.collection("sedes").document(local167.getIdsede()+"").collection("locales").document(local167.getIdlocal()+""), new LocalMap(local167.getIdlocal(),local167.getLocal()));
-                batch.set(db.collection("sedes").document(local168.getIdsede()+"").collection("locales").document(local168.getIdlocal()+""), new LocalMap(local168.getIdlocal(),local168.getLocal()));
-                batch.set(db.collection("sedes").document(local169.getIdsede()+"").collection("locales").document(local169.getIdlocal()+""), new LocalMap(local169.getIdlocal(),local169.getLocal()));
-                batch.set(db.collection("sedes").document(local170.getIdsede()+"").collection("locales").document(local170.getIdlocal()+""), new LocalMap(local170.getIdlocal(),local170.getLocal()));
-                batch.set(db.collection("sedes").document(local171.getIdsede()+"").collection("locales").document(local171.getIdlocal()+""), new LocalMap(local171.getIdlocal(),local171.getLocal()));
-                batch.set(db.collection("sedes").document(local172.getIdsede()+"").collection("locales").document(local172.getIdlocal()+""), new LocalMap(local172.getIdlocal(),local172.getLocal()));
-                batch.set(db.collection("sedes").document(local173.getIdsede()+"").collection("locales").document(local173.getIdlocal()+""), new LocalMap(local173.getIdlocal(),local173.getLocal()));
-                batch.set(db.collection("sedes").document(local174.getIdsede()+"").collection("locales").document(local174.getIdlocal()+""), new LocalMap(local174.getIdlocal(),local174.getLocal()));
-                batch.set(db.collection("sedes").document(local175.getIdsede()+"").collection("locales").document(local175.getIdlocal()+""), new LocalMap(local175.getIdlocal(),local175.getLocal()));
-                batch.set(db.collection("sedes").document(local176.getIdsede()+"").collection("locales").document(local176.getIdlocal()+""), new LocalMap(local176.getIdlocal(),local176.getLocal()));
-                batch.set(db.collection("sedes").document(local177.getIdsede()+"").collection("locales").document(local177.getIdlocal()+""), new LocalMap(local177.getIdlocal(),local177.getLocal()));
-                batch.set(db.collection("sedes").document(local178.getIdsede()+"").collection("locales").document(local178.getIdlocal()+""), new LocalMap(local178.getIdlocal(),local178.getLocal()));
-                batch.set(db.collection("sedes").document(local179.getIdsede()+"").collection("locales").document(local179.getIdlocal()+""), new LocalMap(local179.getIdlocal(),local179.getLocal()));
-                batch.set(db.collection("sedes").document(local180.getIdsede()+"").collection("locales").document(local180.getIdlocal()+""), new LocalMap(local180.getIdlocal(),local180.getLocal()));
-                batch.set(db.collection("sedes").document(local181.getIdsede()+"").collection("locales").document(local181.getIdlocal()+""), new LocalMap(local181.getIdlocal(),local181.getLocal()));
-                batch.set(db.collection("sedes").document(local182.getIdsede()+"").collection("locales").document(local182.getIdlocal()+""), new LocalMap(local182.getIdlocal(),local182.getLocal()));
-                batch.set(db.collection("sedes").document(local183.getIdsede()+"").collection("locales").document(local183.getIdlocal()+""), new LocalMap(local183.getIdlocal(),local183.getLocal()));
-                batch.set(db.collection("sedes").document(local184.getIdsede()+"").collection("locales").document(local184.getIdlocal()+""), new LocalMap(local184.getIdlocal(),local184.getLocal()));
-                batch.set(db.collection("sedes").document(local185.getIdsede()+"").collection("locales").document(local185.getIdlocal()+""), new LocalMap(local185.getIdlocal(),local185.getLocal()));
-                batch.set(db.collection("sedes").document(local186.getIdsede()+"").collection("locales").document(local186.getIdlocal()+""), new LocalMap(local186.getIdlocal(),local186.getLocal()));
-                batch.set(db.collection("sedes").document(local187.getIdsede()+"").collection("locales").document(local187.getIdlocal()+""), new LocalMap(local187.getIdlocal(),local187.getLocal()));
-                batch.set(db.collection("sedes").document(local188.getIdsede()+"").collection("locales").document(local188.getIdlocal()+""), new LocalMap(local188.getIdlocal(),local188.getLocal()));
-                batch.set(db.collection("sedes").document(local189.getIdsede()+"").collection("locales").document(local189.getIdlocal()+""), new LocalMap(local189.getIdlocal(),local189.getLocal()));
-                batch.set(db.collection("sedes").document(local190.getIdsede()+"").collection("locales").document(local190.getIdlocal()+""), new LocalMap(local190.getIdlocal(),local190.getLocal()));
-                batch.set(db.collection("sedes").document(local191.getIdsede()+"").collection("locales").document(local191.getIdlocal()+""), new LocalMap(local191.getIdlocal(),local191.getLocal()));
-                batch.set(db.collection("sedes").document(local192.getIdsede()+"").collection("locales").document(local192.getIdlocal()+""), new LocalMap(local192.getIdlocal(),local192.getLocal()));
-                batch.set(db.collection("sedes").document(local193.getIdsede()+"").collection("locales").document(local193.getIdlocal()+""), new LocalMap(local193.getIdlocal(),local193.getLocal()));
-                batch.set(db.collection("sedes").document(local194.getIdsede()+"").collection("locales").document(local194.getIdlocal()+""), new LocalMap(local194.getIdlocal(),local194.getLocal()));
-                batch.set(db.collection("sedes").document(local195.getIdsede()+"").collection("locales").document(local195.getIdlocal()+""), new LocalMap(local195.getIdlocal(),local195.getLocal()));
-                batch.set(db.collection("sedes").document(local196.getIdsede()+"").collection("locales").document(local196.getIdlocal()+""), new LocalMap(local196.getIdlocal(),local196.getLocal()));
-                batch.set(db.collection("sedes").document(local197.getIdsede()+"").collection("locales").document(local197.getIdlocal()+""), new LocalMap(local197.getIdlocal(),local197.getLocal()));
-                batch.set(db.collection("sedes").document(local198.getIdsede()+"").collection("locales").document(local198.getIdlocal()+""), new LocalMap(local198.getIdlocal(),local198.getLocal()));
-                batch.set(db.collection("sedes").document(local199.getIdsede()+"").collection("locales").document(local199.getIdlocal()+""), new LocalMap(local199.getIdlocal(),local199.getLocal()));
-                batch.set(db.collection("sedes").document(local200.getIdsede()+"").collection("locales").document(local200.getIdlocal()+""), new LocalMap(local200.getIdlocal(),local200.getLocal()));
-                batch.set(db.collection("sedes").document(local201.getIdsede()+"").collection("locales").document(local201.getIdlocal()+""), new LocalMap(local201.getIdlocal(),local201.getLocal()));
-                batch.set(db.collection("sedes").document(local202.getIdsede()+"").collection("locales").document(local202.getIdlocal()+""), new LocalMap(local202.getIdlocal(),local202.getLocal()));
-                batch.set(db.collection("sedes").document(local203.getIdsede()+"").collection("locales").document(local203.getIdlocal()+""), new LocalMap(local203.getIdlocal(),local203.getLocal()));
-                batch.set(db.collection("sedes").document(local204.getIdsede()+"").collection("locales").document(local204.getIdlocal()+""), new LocalMap(local204.getIdlocal(),local204.getLocal()));
-                batch.set(db.collection("sedes").document(local205.getIdsede()+"").collection("locales").document(local205.getIdlocal()+""), new LocalMap(local205.getIdlocal(),local205.getLocal()));
-                batch.set(db.collection("sedes").document(local206.getIdsede()+"").collection("locales").document(local206.getIdlocal()+""), new LocalMap(local206.getIdlocal(),local206.getLocal()));
-                batch.set(db.collection("sedes").document(local207.getIdsede()+"").collection("locales").document(local207.getIdlocal()+""), new LocalMap(local207.getIdlocal(),local207.getLocal()));
-                batch.set(db.collection("sedes").document(local208.getIdsede()+"").collection("locales").document(local208.getIdlocal()+""), new LocalMap(local208.getIdlocal(),local208.getLocal()));
-                batch.set(db.collection("sedes").document(local209.getIdsede()+"").collection("locales").document(local209.getIdlocal()+""), new LocalMap(local209.getIdlocal(),local209.getLocal()));
-                batch.set(db.collection("sedes").document(local210.getIdsede()+"").collection("locales").document(local210.getIdlocal()+""), new LocalMap(local210.getIdlocal(),local210.getLocal()));
-                batch.set(db.collection("sedes").document(local211.getIdsede()+"").collection("locales").document(local211.getIdlocal()+""), new LocalMap(local211.getIdlocal(),local211.getLocal()));
-                batch.set(db.collection("sedes").document(local212.getIdsede()+"").collection("locales").document(local212.getIdlocal()+""), new LocalMap(local212.getIdlocal(),local212.getLocal()));
-                batch.set(db.collection("sedes").document(local213.getIdsede()+"").collection("locales").document(local213.getIdlocal()+""), new LocalMap(local213.getIdlocal(),local213.getLocal()));
-                batch.set(db.collection("sedes").document(local214.getIdsede()+"").collection("locales").document(local214.getIdlocal()+""), new LocalMap(local214.getIdlocal(),local214.getLocal()));
-                batch.set(db.collection("sedes").document(local215.getIdsede()+"").collection("locales").document(local215.getIdlocal()+""), new LocalMap(local215.getIdlocal(),local215.getLocal()));
+                batch.set(db.collection("sedes").document(local1.getIdsede()+"").collection("locales").document(local1.getIdlocal()+""), new LocalMap(local1.getLocal()));
+                batch.set(db.collection("sedes").document(local2.getIdsede()+"").collection("locales").document(local2.getIdlocal()+""), new LocalMap(local2.getLocal()));
+                batch.set(db.collection("sedes").document(local3.getIdsede()+"").collection("locales").document(local3.getIdlocal()+""), new LocalMap(local3.getLocal()));
+                batch.set(db.collection("sedes").document(local4.getIdsede()+"").collection("locales").document(local4.getIdlocal()+""), new LocalMap(local4.getLocal()));
+                batch.set(db.collection("sedes").document(local5.getIdsede()+"").collection("locales").document(local5.getIdlocal()+""), new LocalMap(local5.getLocal()));
+                batch.set(db.collection("sedes").document(local6.getIdsede()+"").collection("locales").document(local6.getIdlocal()+""), new LocalMap(local6.getLocal()));
+                batch.set(db.collection("sedes").document(local7.getIdsede()+"").collection("locales").document(local7.getIdlocal()+""), new LocalMap(local7.getLocal()));
+                batch.set(db.collection("sedes").document(local8.getIdsede()+"").collection("locales").document(local8.getIdlocal()+""), new LocalMap(local8.getLocal()));
+                batch.set(db.collection("sedes").document(local9.getIdsede()+"").collection("locales").document(local9.getIdlocal()+""), new LocalMap(local9.getLocal()));
+                batch.set(db.collection("sedes").document(local10.getIdsede()+"").collection("locales").document(local10.getIdlocal()+""), new LocalMap(local10.getLocal()));
+                batch.set(db.collection("sedes").document(local11.getIdsede()+"").collection("locales").document(local11.getIdlocal()+""), new LocalMap(local11.getLocal()));
+                batch.set(db.collection("sedes").document(local12.getIdsede()+"").collection("locales").document(local12.getIdlocal()+""), new LocalMap(local12.getLocal()));
+                batch.set(db.collection("sedes").document(local13.getIdsede()+"").collection("locales").document(local13.getIdlocal()+""), new LocalMap(local13.getLocal()));
+                batch.set(db.collection("sedes").document(local14.getIdsede()+"").collection("locales").document(local14.getIdlocal()+""), new LocalMap(local14.getLocal()));
+                batch.set(db.collection("sedes").document(local15.getIdsede()+"").collection("locales").document(local15.getIdlocal()+""), new LocalMap(local15.getLocal()));
+                batch.set(db.collection("sedes").document(local16.getIdsede()+"").collection("locales").document(local16.getIdlocal()+""), new LocalMap(local16.getLocal()));
+                batch.set(db.collection("sedes").document(local17.getIdsede()+"").collection("locales").document(local17.getIdlocal()+""), new LocalMap(local17.getLocal()));
+                batch.set(db.collection("sedes").document(local18.getIdsede()+"").collection("locales").document(local18.getIdlocal()+""), new LocalMap(local18.getLocal()));
+                batch.set(db.collection("sedes").document(local19.getIdsede()+"").collection("locales").document(local19.getIdlocal()+""), new LocalMap(local19.getLocal()));
+                batch.set(db.collection("sedes").document(local20.getIdsede()+"").collection("locales").document(local20.getIdlocal()+""), new LocalMap(local20.getLocal()));
+                batch.set(db.collection("sedes").document(local21.getIdsede()+"").collection("locales").document(local21.getIdlocal()+""), new LocalMap(local21.getLocal()));
+                batch.set(db.collection("sedes").document(local22.getIdsede()+"").collection("locales").document(local22.getIdlocal()+""), new LocalMap(local22.getLocal()));
+                batch.set(db.collection("sedes").document(local23.getIdsede()+"").collection("locales").document(local23.getIdlocal()+""), new LocalMap(local23.getLocal()));
+                batch.set(db.collection("sedes").document(local24.getIdsede()+"").collection("locales").document(local24.getIdlocal()+""), new LocalMap(local24.getLocal()));
+                batch.set(db.collection("sedes").document(local25.getIdsede()+"").collection("locales").document(local25.getIdlocal()+""), new LocalMap(local25.getLocal()));
+                batch.set(db.collection("sedes").document(local26.getIdsede()+"").collection("locales").document(local26.getIdlocal()+""), new LocalMap(local26.getLocal()));
+                batch.set(db.collection("sedes").document(local27.getIdsede()+"").collection("locales").document(local27.getIdlocal()+""), new LocalMap(local27.getLocal()));
+                batch.set(db.collection("sedes").document(local28.getIdsede()+"").collection("locales").document(local28.getIdlocal()+""), new LocalMap(local28.getLocal()));
+                batch.set(db.collection("sedes").document(local29.getIdsede()+"").collection("locales").document(local29.getIdlocal()+""), new LocalMap(local29.getLocal()));
+                batch.set(db.collection("sedes").document(local30.getIdsede()+"").collection("locales").document(local30.getIdlocal()+""), new LocalMap(local30.getLocal()));
+                batch.set(db.collection("sedes").document(local31.getIdsede()+"").collection("locales").document(local31.getIdlocal()+""), new LocalMap(local31.getLocal()));
+                batch.set(db.collection("sedes").document(local32.getIdsede()+"").collection("locales").document(local32.getIdlocal()+""), new LocalMap(local32.getLocal()));
+                batch.set(db.collection("sedes").document(local33.getIdsede()+"").collection("locales").document(local33.getIdlocal()+""), new LocalMap(local33.getLocal()));
+                batch.set(db.collection("sedes").document(local34.getIdsede()+"").collection("locales").document(local34.getIdlocal()+""), new LocalMap(local34.getLocal()));
+                batch.set(db.collection("sedes").document(local35.getIdsede()+"").collection("locales").document(local35.getIdlocal()+""), new LocalMap(local35.getLocal()));
+                batch.set(db.collection("sedes").document(local36.getIdsede()+"").collection("locales").document(local36.getIdlocal()+""), new LocalMap(local36.getLocal()));
+                batch.set(db.collection("sedes").document(local37.getIdsede()+"").collection("locales").document(local37.getIdlocal()+""), new LocalMap(local37.getLocal()));
+                batch.set(db.collection("sedes").document(local38.getIdsede()+"").collection("locales").document(local38.getIdlocal()+""), new LocalMap(local38.getLocal()));
+                batch.set(db.collection("sedes").document(local39.getIdsede()+"").collection("locales").document(local39.getIdlocal()+""), new LocalMap(local39.getLocal()));
+                batch.set(db.collection("sedes").document(local40.getIdsede()+"").collection("locales").document(local40.getIdlocal()+""), new LocalMap(local40.getLocal()));
+                batch.set(db.collection("sedes").document(local41.getIdsede()+"").collection("locales").document(local41.getIdlocal()+""), new LocalMap(local41.getLocal()));
+                batch.set(db.collection("sedes").document(local42.getIdsede()+"").collection("locales").document(local42.getIdlocal()+""), new LocalMap(local42.getLocal()));
+                batch.set(db.collection("sedes").document(local43.getIdsede()+"").collection("locales").document(local43.getIdlocal()+""), new LocalMap(local43.getLocal()));
+                batch.set(db.collection("sedes").document(local44.getIdsede()+"").collection("locales").document(local44.getIdlocal()+""), new LocalMap(local44.getLocal()));
+                batch.set(db.collection("sedes").document(local45.getIdsede()+"").collection("locales").document(local45.getIdlocal()+""), new LocalMap(local45.getLocal()));
+                batch.set(db.collection("sedes").document(local46.getIdsede()+"").collection("locales").document(local46.getIdlocal()+""), new LocalMap(local46.getLocal()));
+                batch.set(db.collection("sedes").document(local47.getIdsede()+"").collection("locales").document(local47.getIdlocal()+""), new LocalMap(local47.getLocal()));
+                batch.set(db.collection("sedes").document(local48.getIdsede()+"").collection("locales").document(local48.getIdlocal()+""), new LocalMap(local48.getLocal()));
+                batch.set(db.collection("sedes").document(local49.getIdsede()+"").collection("locales").document(local49.getIdlocal()+""), new LocalMap(local49.getLocal()));
+                batch.set(db.collection("sedes").document(local50.getIdsede()+"").collection("locales").document(local50.getIdlocal()+""), new LocalMap(local50.getLocal()));
+                batch.set(db.collection("sedes").document(local51.getIdsede()+"").collection("locales").document(local51.getIdlocal()+""), new LocalMap(local51.getLocal()));
+                batch.set(db.collection("sedes").document(local52.getIdsede()+"").collection("locales").document(local52.getIdlocal()+""), new LocalMap(local52.getLocal()));
+                batch.set(db.collection("sedes").document(local53.getIdsede()+"").collection("locales").document(local53.getIdlocal()+""), new LocalMap(local53.getLocal()));
+                batch.set(db.collection("sedes").document(local54.getIdsede()+"").collection("locales").document(local54.getIdlocal()+""), new LocalMap(local54.getLocal()));
+                batch.set(db.collection("sedes").document(local55.getIdsede()+"").collection("locales").document(local55.getIdlocal()+""), new LocalMap(local55.getLocal()));
+                batch.set(db.collection("sedes").document(local56.getIdsede()+"").collection("locales").document(local56.getIdlocal()+""), new LocalMap(local56.getLocal()));
+                batch.set(db.collection("sedes").document(local57.getIdsede()+"").collection("locales").document(local57.getIdlocal()+""), new LocalMap(local57.getLocal()));
+                batch.set(db.collection("sedes").document(local58.getIdsede()+"").collection("locales").document(local58.getIdlocal()+""), new LocalMap(local58.getLocal()));
+                batch.set(db.collection("sedes").document(local59.getIdsede()+"").collection("locales").document(local59.getIdlocal()+""), new LocalMap(local59.getLocal()));
+                batch.set(db.collection("sedes").document(local60.getIdsede()+"").collection("locales").document(local60.getIdlocal()+""), new LocalMap(local60.getLocal()));
+                batch.set(db.collection("sedes").document(local61.getIdsede()+"").collection("locales").document(local61.getIdlocal()+""), new LocalMap(local61.getLocal()));
+                batch.set(db.collection("sedes").document(local62.getIdsede()+"").collection("locales").document(local62.getIdlocal()+""), new LocalMap(local62.getLocal()));
+                batch.set(db.collection("sedes").document(local63.getIdsede()+"").collection("locales").document(local63.getIdlocal()+""), new LocalMap(local63.getLocal()));
+                batch.set(db.collection("sedes").document(local64.getIdsede()+"").collection("locales").document(local64.getIdlocal()+""), new LocalMap(local64.getLocal()));
+                batch.set(db.collection("sedes").document(local65.getIdsede()+"").collection("locales").document(local65.getIdlocal()+""), new LocalMap(local65.getLocal()));
+                batch.set(db.collection("sedes").document(local66.getIdsede()+"").collection("locales").document(local66.getIdlocal()+""), new LocalMap(local66.getLocal()));
+                batch.set(db.collection("sedes").document(local67.getIdsede()+"").collection("locales").document(local67.getIdlocal()+""), new LocalMap(local67.getLocal()));
+                batch.set(db.collection("sedes").document(local68.getIdsede()+"").collection("locales").document(local68.getIdlocal()+""), new LocalMap(local68.getLocal()));
+                batch.set(db.collection("sedes").document(local69.getIdsede()+"").collection("locales").document(local69.getIdlocal()+""), new LocalMap(local69.getLocal()));
+                batch.set(db.collection("sedes").document(local70.getIdsede()+"").collection("locales").document(local70.getIdlocal()+""), new LocalMap(local70.getLocal()));
+                batch.set(db.collection("sedes").document(local71.getIdsede()+"").collection("locales").document(local71.getIdlocal()+""), new LocalMap(local71.getLocal()));
+                batch.set(db.collection("sedes").document(local72.getIdsede()+"").collection("locales").document(local72.getIdlocal()+""), new LocalMap(local72.getLocal()));
+                batch.set(db.collection("sedes").document(local73.getIdsede()+"").collection("locales").document(local73.getIdlocal()+""), new LocalMap(local73.getLocal()));
+                batch.set(db.collection("sedes").document(local74.getIdsede()+"").collection("locales").document(local74.getIdlocal()+""), new LocalMap(local74.getLocal()));
+                batch.set(db.collection("sedes").document(local75.getIdsede()+"").collection("locales").document(local75.getIdlocal()+""), new LocalMap(local75.getLocal()));
+                batch.set(db.collection("sedes").document(local76.getIdsede()+"").collection("locales").document(local76.getIdlocal()+""), new LocalMap(local76.getLocal()));
+                batch.set(db.collection("sedes").document(local77.getIdsede()+"").collection("locales").document(local77.getIdlocal()+""), new LocalMap(local77.getLocal()));
+                batch.set(db.collection("sedes").document(local78.getIdsede()+"").collection("locales").document(local78.getIdlocal()+""), new LocalMap(local78.getLocal()));
+                batch.set(db.collection("sedes").document(local79.getIdsede()+"").collection("locales").document(local79.getIdlocal()+""), new LocalMap(local79.getLocal()));
+                batch.set(db.collection("sedes").document(local80.getIdsede()+"").collection("locales").document(local80.getIdlocal()+""), new LocalMap(local80.getLocal()));
+                batch.set(db.collection("sedes").document(local81.getIdsede()+"").collection("locales").document(local81.getIdlocal()+""), new LocalMap(local81.getLocal()));
+                batch.set(db.collection("sedes").document(local82.getIdsede()+"").collection("locales").document(local82.getIdlocal()+""), new LocalMap(local82.getLocal()));
+                batch.set(db.collection("sedes").document(local83.getIdsede()+"").collection("locales").document(local83.getIdlocal()+""), new LocalMap(local83.getLocal()));
+                batch.set(db.collection("sedes").document(local84.getIdsede()+"").collection("locales").document(local84.getIdlocal()+""), new LocalMap(local84.getLocal()));
+                batch.set(db.collection("sedes").document(local85.getIdsede()+"").collection("locales").document(local85.getIdlocal()+""), new LocalMap(local85.getLocal()));
+                batch.set(db.collection("sedes").document(local86.getIdsede()+"").collection("locales").document(local86.getIdlocal()+""), new LocalMap(local86.getLocal()));
+                batch.set(db.collection("sedes").document(local87.getIdsede()+"").collection("locales").document(local87.getIdlocal()+""), new LocalMap(local87.getLocal()));
+                batch.set(db.collection("sedes").document(local88.getIdsede()+"").collection("locales").document(local88.getIdlocal()+""), new LocalMap(local88.getLocal()));
+                batch.set(db.collection("sedes").document(local89.getIdsede()+"").collection("locales").document(local89.getIdlocal()+""), new LocalMap(local89.getLocal()));
+                batch.set(db.collection("sedes").document(local90.getIdsede()+"").collection("locales").document(local90.getIdlocal()+""), new LocalMap(local90.getLocal()));
+                batch.set(db.collection("sedes").document(local91.getIdsede()+"").collection("locales").document(local91.getIdlocal()+""), new LocalMap(local91.getLocal()));
+                batch.set(db.collection("sedes").document(local92.getIdsede()+"").collection("locales").document(local92.getIdlocal()+""), new LocalMap(local92.getLocal()));
+                batch.set(db.collection("sedes").document(local93.getIdsede()+"").collection("locales").document(local93.getIdlocal()+""), new LocalMap(local93.getLocal()));
+                batch.set(db.collection("sedes").document(local94.getIdsede()+"").collection("locales").document(local94.getIdlocal()+""), new LocalMap(local94.getLocal()));
+                batch.set(db.collection("sedes").document(local95.getIdsede()+"").collection("locales").document(local95.getIdlocal()+""), new LocalMap(local95.getLocal()));
+                batch.set(db.collection("sedes").document(local96.getIdsede()+"").collection("locales").document(local96.getIdlocal()+""), new LocalMap(local96.getLocal()));
+                batch.set(db.collection("sedes").document(local97.getIdsede()+"").collection("locales").document(local97.getIdlocal()+""), new LocalMap(local97.getLocal()));
+                batch.set(db.collection("sedes").document(local98.getIdsede()+"").collection("locales").document(local98.getIdlocal()+""), new LocalMap(local98.getLocal()));
+                batch.set(db.collection("sedes").document(local99.getIdsede()+"").collection("locales").document(local99.getIdlocal()+""), new LocalMap(local99.getLocal()));
+                batch.set(db.collection("sedes").document(local100.getIdsede()+"").collection("locales").document(local100.getIdlocal()+""), new LocalMap(local100.getLocal()));
+                batch.set(db.collection("sedes").document(local101.getIdsede()+"").collection("locales").document(local101.getIdlocal()+""), new LocalMap(local101.getLocal()));
+                batch.set(db.collection("sedes").document(local102.getIdsede()+"").collection("locales").document(local102.getIdlocal()+""), new LocalMap(local102.getLocal()));
+                batch.set(db.collection("sedes").document(local103.getIdsede()+"").collection("locales").document(local103.getIdlocal()+""), new LocalMap(local103.getLocal()));
+                batch.set(db.collection("sedes").document(local104.getIdsede()+"").collection("locales").document(local104.getIdlocal()+""), new LocalMap(local104.getLocal()));
+                batch.set(db.collection("sedes").document(local105.getIdsede()+"").collection("locales").document(local105.getIdlocal()+""), new LocalMap(local105.getLocal()));
+                batch.set(db.collection("sedes").document(local106.getIdsede()+"").collection("locales").document(local106.getIdlocal()+""), new LocalMap(local106.getLocal()));
+                batch.set(db.collection("sedes").document(local107.getIdsede()+"").collection("locales").document(local107.getIdlocal()+""), new LocalMap(local107.getLocal()));
+                batch.set(db.collection("sedes").document(local108.getIdsede()+"").collection("locales").document(local108.getIdlocal()+""), new LocalMap(local108.getLocal()));
+                batch.set(db.collection("sedes").document(local109.getIdsede()+"").collection("locales").document(local109.getIdlocal()+""), new LocalMap(local109.getLocal()));
+                batch.set(db.collection("sedes").document(local110.getIdsede()+"").collection("locales").document(local110.getIdlocal()+""), new LocalMap(local110.getLocal()));
+                batch.set(db.collection("sedes").document(local111.getIdsede()+"").collection("locales").document(local111.getIdlocal()+""), new LocalMap(local111.getLocal()));
+                batch.set(db.collection("sedes").document(local112.getIdsede()+"").collection("locales").document(local112.getIdlocal()+""), new LocalMap(local112.getLocal()));
+                batch.set(db.collection("sedes").document(local113.getIdsede()+"").collection("locales").document(local113.getIdlocal()+""), new LocalMap(local113.getLocal()));
+                batch.set(db.collection("sedes").document(local114.getIdsede()+"").collection("locales").document(local114.getIdlocal()+""), new LocalMap(local114.getLocal()));
+                batch.set(db.collection("sedes").document(local115.getIdsede()+"").collection("locales").document(local115.getIdlocal()+""), new LocalMap(local115.getLocal()));
+                batch.set(db.collection("sedes").document(local116.getIdsede()+"").collection("locales").document(local116.getIdlocal()+""), new LocalMap(local116.getLocal()));
+                batch.set(db.collection("sedes").document(local117.getIdsede()+"").collection("locales").document(local117.getIdlocal()+""), new LocalMap(local117.getLocal()));
+                batch.set(db.collection("sedes").document(local118.getIdsede()+"").collection("locales").document(local118.getIdlocal()+""), new LocalMap(local118.getLocal()));
+                batch.set(db.collection("sedes").document(local119.getIdsede()+"").collection("locales").document(local119.getIdlocal()+""), new LocalMap(local119.getLocal()));
+                batch.set(db.collection("sedes").document(local120.getIdsede()+"").collection("locales").document(local120.getIdlocal()+""), new LocalMap(local120.getLocal()));
+                batch.set(db.collection("sedes").document(local121.getIdsede()+"").collection("locales").document(local121.getIdlocal()+""), new LocalMap(local121.getLocal()));
+                batch.set(db.collection("sedes").document(local122.getIdsede()+"").collection("locales").document(local122.getIdlocal()+""), new LocalMap(local122.getLocal()));
+                batch.set(db.collection("sedes").document(local123.getIdsede()+"").collection("locales").document(local123.getIdlocal()+""), new LocalMap(local123.getLocal()));
+                batch.set(db.collection("sedes").document(local124.getIdsede()+"").collection("locales").document(local124.getIdlocal()+""), new LocalMap(local124.getLocal()));
+                batch.set(db.collection("sedes").document(local125.getIdsede()+"").collection("locales").document(local125.getIdlocal()+""), new LocalMap(local125.getLocal()));
+                batch.set(db.collection("sedes").document(local126.getIdsede()+"").collection("locales").document(local126.getIdlocal()+""), new LocalMap(local126.getLocal()));
+                batch.set(db.collection("sedes").document(local127.getIdsede()+"").collection("locales").document(local127.getIdlocal()+""), new LocalMap(local127.getLocal()));
+                batch.set(db.collection("sedes").document(local128.getIdsede()+"").collection("locales").document(local128.getIdlocal()+""), new LocalMap(local128.getLocal()));
+                batch.set(db.collection("sedes").document(local129.getIdsede()+"").collection("locales").document(local129.getIdlocal()+""), new LocalMap(local129.getLocal()));
+                batch.set(db.collection("sedes").document(local130.getIdsede()+"").collection("locales").document(local130.getIdlocal()+""), new LocalMap(local130.getLocal()));
+                batch.set(db.collection("sedes").document(local131.getIdsede()+"").collection("locales").document(local131.getIdlocal()+""), new LocalMap(local131.getLocal()));
+                batch.set(db.collection("sedes").document(local132.getIdsede()+"").collection("locales").document(local132.getIdlocal()+""), new LocalMap(local132.getLocal()));
+                batch.set(db.collection("sedes").document(local133.getIdsede()+"").collection("locales").document(local133.getIdlocal()+""), new LocalMap(local133.getLocal()));
+                batch.set(db.collection("sedes").document(local134.getIdsede()+"").collection("locales").document(local134.getIdlocal()+""), new LocalMap(local134.getLocal()));
+                batch.set(db.collection("sedes").document(local135.getIdsede()+"").collection("locales").document(local135.getIdlocal()+""), new LocalMap(local135.getLocal()));
+                batch.set(db.collection("sedes").document(local136.getIdsede()+"").collection("locales").document(local136.getIdlocal()+""), new LocalMap(local136.getLocal()));
+                batch.set(db.collection("sedes").document(local137.getIdsede()+"").collection("locales").document(local137.getIdlocal()+""), new LocalMap(local137.getLocal()));
+                batch.set(db.collection("sedes").document(local138.getIdsede()+"").collection("locales").document(local138.getIdlocal()+""), new LocalMap(local138.getLocal()));
+                batch.set(db.collection("sedes").document(local139.getIdsede()+"").collection("locales").document(local139.getIdlocal()+""), new LocalMap(local139.getLocal()));
+                batch.set(db.collection("sedes").document(local140.getIdsede()+"").collection("locales").document(local140.getIdlocal()+""), new LocalMap(local140.getLocal()));
+                batch.set(db.collection("sedes").document(local141.getIdsede()+"").collection("locales").document(local141.getIdlocal()+""), new LocalMap(local141.getLocal()));
+                batch.set(db.collection("sedes").document(local142.getIdsede()+"").collection("locales").document(local142.getIdlocal()+""), new LocalMap(local142.getLocal()));
+                batch.set(db.collection("sedes").document(local143.getIdsede()+"").collection("locales").document(local143.getIdlocal()+""), new LocalMap(local143.getLocal()));
+                batch.set(db.collection("sedes").document(local144.getIdsede()+"").collection("locales").document(local144.getIdlocal()+""), new LocalMap(local144.getLocal()));
+                batch.set(db.collection("sedes").document(local145.getIdsede()+"").collection("locales").document(local145.getIdlocal()+""), new LocalMap(local145.getLocal()));
+                batch.set(db.collection("sedes").document(local146.getIdsede()+"").collection("locales").document(local146.getIdlocal()+""), new LocalMap(local146.getLocal()));
+                batch.set(db.collection("sedes").document(local147.getIdsede()+"").collection("locales").document(local147.getIdlocal()+""), new LocalMap(local147.getLocal()));
+                batch.set(db.collection("sedes").document(local148.getIdsede()+"").collection("locales").document(local148.getIdlocal()+""), new LocalMap(local148.getLocal()));
+                batch.set(db.collection("sedes").document(local149.getIdsede()+"").collection("locales").document(local149.getIdlocal()+""), new LocalMap(local149.getLocal()));
+                batch.set(db.collection("sedes").document(local150.getIdsede()+"").collection("locales").document(local150.getIdlocal()+""), new LocalMap(local150.getLocal()));
+                batch.set(db.collection("sedes").document(local151.getIdsede()+"").collection("locales").document(local151.getIdlocal()+""), new LocalMap(local151.getLocal()));
+                batch.set(db.collection("sedes").document(local152.getIdsede()+"").collection("locales").document(local152.getIdlocal()+""), new LocalMap(local152.getLocal()));
+                batch.set(db.collection("sedes").document(local153.getIdsede()+"").collection("locales").document(local153.getIdlocal()+""), new LocalMap(local153.getLocal()));
+                batch.set(db.collection("sedes").document(local154.getIdsede()+"").collection("locales").document(local154.getIdlocal()+""), new LocalMap(local154.getLocal()));
+                batch.set(db.collection("sedes").document(local155.getIdsede()+"").collection("locales").document(local155.getIdlocal()+""), new LocalMap(local155.getLocal()));
+                batch.set(db.collection("sedes").document(local156.getIdsede()+"").collection("locales").document(local156.getIdlocal()+""), new LocalMap(local156.getLocal()));
+                batch.set(db.collection("sedes").document(local157.getIdsede()+"").collection("locales").document(local157.getIdlocal()+""), new LocalMap(local157.getLocal()));
+                batch.set(db.collection("sedes").document(local158.getIdsede()+"").collection("locales").document(local158.getIdlocal()+""), new LocalMap(local158.getLocal()));
+                batch.set(db.collection("sedes").document(local159.getIdsede()+"").collection("locales").document(local159.getIdlocal()+""), new LocalMap(local159.getLocal()));
+                batch.set(db.collection("sedes").document(local160.getIdsede()+"").collection("locales").document(local160.getIdlocal()+""), new LocalMap(local160.getLocal()));
+                batch.set(db.collection("sedes").document(local161.getIdsede()+"").collection("locales").document(local161.getIdlocal()+""), new LocalMap(local161.getLocal()));
+                batch.set(db.collection("sedes").document(local162.getIdsede()+"").collection("locales").document(local162.getIdlocal()+""), new LocalMap(local162.getLocal()));
+                batch.set(db.collection("sedes").document(local163.getIdsede()+"").collection("locales").document(local163.getIdlocal()+""), new LocalMap(local163.getLocal()));
+                batch.set(db.collection("sedes").document(local164.getIdsede()+"").collection("locales").document(local164.getIdlocal()+""), new LocalMap(local164.getLocal()));
+                batch.set(db.collection("sedes").document(local165.getIdsede()+"").collection("locales").document(local165.getIdlocal()+""), new LocalMap(local165.getLocal()));
+                batch.set(db.collection("sedes").document(local166.getIdsede()+"").collection("locales").document(local166.getIdlocal()+""), new LocalMap(local166.getLocal()));
+                batch.set(db.collection("sedes").document(local167.getIdsede()+"").collection("locales").document(local167.getIdlocal()+""), new LocalMap(local167.getLocal()));
+                batch.set(db.collection("sedes").document(local168.getIdsede()+"").collection("locales").document(local168.getIdlocal()+""), new LocalMap(local168.getLocal()));
+                batch.set(db.collection("sedes").document(local169.getIdsede()+"").collection("locales").document(local169.getIdlocal()+""), new LocalMap(local169.getLocal()));
+                batch.set(db.collection("sedes").document(local170.getIdsede()+"").collection("locales").document(local170.getIdlocal()+""), new LocalMap(local170.getLocal()));
+                batch.set(db.collection("sedes").document(local171.getIdsede()+"").collection("locales").document(local171.getIdlocal()+""), new LocalMap(local171.getLocal()));
+                batch.set(db.collection("sedes").document(local172.getIdsede()+"").collection("locales").document(local172.getIdlocal()+""), new LocalMap(local172.getLocal()));
+                batch.set(db.collection("sedes").document(local173.getIdsede()+"").collection("locales").document(local173.getIdlocal()+""), new LocalMap(local173.getLocal()));
+                batch.set(db.collection("sedes").document(local174.getIdsede()+"").collection("locales").document(local174.getIdlocal()+""), new LocalMap(local174.getLocal()));
+                batch.set(db.collection("sedes").document(local175.getIdsede()+"").collection("locales").document(local175.getIdlocal()+""), new LocalMap(local175.getLocal()));
+                batch.set(db.collection("sedes").document(local176.getIdsede()+"").collection("locales").document(local176.getIdlocal()+""), new LocalMap(local176.getLocal()));
+                batch.set(db.collection("sedes").document(local177.getIdsede()+"").collection("locales").document(local177.getIdlocal()+""), new LocalMap(local177.getLocal()));
+                batch.set(db.collection("sedes").document(local178.getIdsede()+"").collection("locales").document(local178.getIdlocal()+""), new LocalMap(local178.getLocal()));
+                batch.set(db.collection("sedes").document(local179.getIdsede()+"").collection("locales").document(local179.getIdlocal()+""), new LocalMap(local179.getLocal()));
+                batch.set(db.collection("sedes").document(local180.getIdsede()+"").collection("locales").document(local180.getIdlocal()+""), new LocalMap(local180.getLocal()));
+                batch.set(db.collection("sedes").document(local181.getIdsede()+"").collection("locales").document(local181.getIdlocal()+""), new LocalMap(local181.getLocal()));
+                batch.set(db.collection("sedes").document(local182.getIdsede()+"").collection("locales").document(local182.getIdlocal()+""), new LocalMap(local182.getLocal()));
+                batch.set(db.collection("sedes").document(local183.getIdsede()+"").collection("locales").document(local183.getIdlocal()+""), new LocalMap(local183.getLocal()));
+                batch.set(db.collection("sedes").document(local184.getIdsede()+"").collection("locales").document(local184.getIdlocal()+""), new LocalMap(local184.getLocal()));
+                batch.set(db.collection("sedes").document(local185.getIdsede()+"").collection("locales").document(local185.getIdlocal()+""), new LocalMap(local185.getLocal()));
+                batch.set(db.collection("sedes").document(local186.getIdsede()+"").collection("locales").document(local186.getIdlocal()+""), new LocalMap(local186.getLocal()));
+                batch.set(db.collection("sedes").document(local187.getIdsede()+"").collection("locales").document(local187.getIdlocal()+""), new LocalMap(local187.getLocal()));
+                batch.set(db.collection("sedes").document(local188.getIdsede()+"").collection("locales").document(local188.getIdlocal()+""), new LocalMap(local188.getLocal()));
+                batch.set(db.collection("sedes").document(local189.getIdsede()+"").collection("locales").document(local189.getIdlocal()+""), new LocalMap(local189.getLocal()));
+                batch.set(db.collection("sedes").document(local190.getIdsede()+"").collection("locales").document(local190.getIdlocal()+""), new LocalMap(local190.getLocal()));
+                batch.set(db.collection("sedes").document(local191.getIdsede()+"").collection("locales").document(local191.getIdlocal()+""), new LocalMap(local191.getLocal()));
+                batch.set(db.collection("sedes").document(local192.getIdsede()+"").collection("locales").document(local192.getIdlocal()+""), new LocalMap(local192.getLocal()));
+                batch.set(db.collection("sedes").document(local193.getIdsede()+"").collection("locales").document(local193.getIdlocal()+""), new LocalMap(local193.getLocal()));
+                batch.set(db.collection("sedes").document(local194.getIdsede()+"").collection("locales").document(local194.getIdlocal()+""), new LocalMap(local194.getLocal()));
+                batch.set(db.collection("sedes").document(local195.getIdsede()+"").collection("locales").document(local195.getIdlocal()+""), new LocalMap(local195.getLocal()));
+                batch.set(db.collection("sedes").document(local196.getIdsede()+"").collection("locales").document(local196.getIdlocal()+""), new LocalMap(local196.getLocal()));
+                batch.set(db.collection("sedes").document(local197.getIdsede()+"").collection("locales").document(local197.getIdlocal()+""), new LocalMap(local197.getLocal()));
+                batch.set(db.collection("sedes").document(local198.getIdsede()+"").collection("locales").document(local198.getIdlocal()+""), new LocalMap(local198.getLocal()));
+                batch.set(db.collection("sedes").document(local199.getIdsede()+"").collection("locales").document(local199.getIdlocal()+""), new LocalMap(local199.getLocal()));
+                batch.set(db.collection("sedes").document(local200.getIdsede()+"").collection("locales").document(local200.getIdlocal()+""), new LocalMap(local200.getLocal()));
+                batch.set(db.collection("sedes").document(local201.getIdsede()+"").collection("locales").document(local201.getIdlocal()+""), new LocalMap(local201.getLocal()));
+                batch.set(db.collection("sedes").document(local202.getIdsede()+"").collection("locales").document(local202.getIdlocal()+""), new LocalMap(local202.getLocal()));
+                batch.set(db.collection("sedes").document(local203.getIdsede()+"").collection("locales").document(local203.getIdlocal()+""), new LocalMap(local203.getLocal()));
+                batch.set(db.collection("sedes").document(local204.getIdsede()+"").collection("locales").document(local204.getIdlocal()+""), new LocalMap(local204.getLocal()));
+                batch.set(db.collection("sedes").document(local205.getIdsede()+"").collection("locales").document(local205.getIdlocal()+""), new LocalMap(local205.getLocal()));
+                batch.set(db.collection("sedes").document(local206.getIdsede()+"").collection("locales").document(local206.getIdlocal()+""), new LocalMap(local206.getLocal()));
+                batch.set(db.collection("sedes").document(local207.getIdsede()+"").collection("locales").document(local207.getIdlocal()+""), new LocalMap(local207.getLocal()));
+                batch.set(db.collection("sedes").document(local208.getIdsede()+"").collection("locales").document(local208.getIdlocal()+""), new LocalMap(local208.getLocal()));
+                batch.set(db.collection("sedes").document(local209.getIdsede()+"").collection("locales").document(local209.getIdlocal()+""), new LocalMap(local209.getLocal()));
+                batch.set(db.collection("sedes").document(local210.getIdsede()+"").collection("locales").document(local210.getIdlocal()+""), new LocalMap(local210.getLocal()));
+                batch.set(db.collection("sedes").document(local211.getIdsede()+"").collection("locales").document(local211.getIdlocal()+""), new LocalMap(local211.getLocal()));
+                batch.set(db.collection("sedes").document(local212.getIdsede()+"").collection("locales").document(local212.getIdlocal()+""), new LocalMap(local212.getLocal()));
+                batch.set(db.collection("sedes").document(local213.getIdsede()+"").collection("locales").document(local213.getIdlocal()+""), new LocalMap(local213.getLocal()));
+                batch.set(db.collection("sedes").document(local214.getIdsede()+"").collection("locales").document(local214.getIdlocal()+""), new LocalMap(local214.getLocal()));
+                batch.set(db.collection("sedes").document(local215.getIdsede()+"").collection("locales").document(local215.getIdlocal()+""), new LocalMap(local215.getLocal()));
 
                 batch.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -665,9 +668,9 @@ public class MainActivity extends AppCompatActivity {
                     WriteBatch batch = db.batch();
                     for (Caja caja : cajas){
                         Map<String, Object> cajaFirebase = new HashMap<>();
-                        cajaFirebase.put("cod_barra_caja", caja.getCod_barra_caja());
                         cajaFirebase.put("tipo", caja.getTipo());
-                        cajaFirebase.put("check_registro",0);
+                        cajaFirebase.put("check_reg_ingreso", 0);
+                        cajaFirebase.put("check_reg_salida", 0);
                         batch.set(
                                 db.collection("sedes").document(caja.getIdsede()+"")
                                         .collection("locales").document(caja.getIdlocal()+"")
@@ -684,14 +687,124 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnResumen1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Resumen resumen =  new Resumen(1301,262,215,0,0,0,0,0,0);
+                db.collection("resumen").document("resumen_total").set(resumen).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(MainActivity.this, "RESUMEN TOTAL SUBIDO", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
+                SedeOperativa sedeOperativa1 = new SedeOperativa(1,"LIMA METROPOLITANA",248,41,31,0,0,0,0,0,0);
+                SedeOperativa sedeOperativa2 = new SedeOperativa(2,"CALLAO",24,5,5,0,0,0,0,0,0);
+                SedeOperativa sedeOperativa3 = new SedeOperativa(3,"RESTO DEL PAIS",1029,216,179,0,0,0,0,0,0);
+
+                WriteBatch batch1 = db.batch();
+                batch1.set(db.collection("resumen").document("resumen_total").collection("sedes_operativas").document(sedeOperativa1.getId_operativa()+""), sedeOperativa1);
+                batch1.set(db.collection("resumen").document("resumen_total").collection("sedes_operativas").document(sedeOperativa2.getId_operativa()+""), sedeOperativa2);
+                batch1.set(db.collection("resumen").document("resumen_total").collection("sedes_operativas").document(sedeOperativa3.getId_operativa()+""), sedeOperativa3);
+
+                batch1.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(MainActivity.this, "SEDES OPERATIVAS RESUMEN SUBIDAS", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                ArrayList<SedeRes> sedeResArrayList = new ArrayList<>();
+                SedeRes sedeRes1 = new SedeRes(3,1,"AMAZONAS-BAGUA GRANDE",15,4,3,0,0,0,0,0,0);sedeResArrayList.add(sedeRes1);
+                SedeRes sedeRes2 = new SedeRes(3,2,"AMAZONAS-CHACHAPOYAS",12,3,3,0,0,0,0,0,0);sedeResArrayList.add(sedeRes2);
+                SedeRes sedeRes3 = new SedeRes(3,3,"ANCASH-CHIMBOTE",25,6,4,0,0,0,0,0,0);sedeResArrayList.add(sedeRes3);
+                SedeRes sedeRes4 = new SedeRes(3,4,"ANCASH-HUARAZ",46,10,10,0,0,0,0,0,0);sedeResArrayList.add(sedeRes4);
+                SedeRes sedeRes5 = new SedeRes(3,5,"APURIMAC-ABANCAY",17,3,3,0,0,0,0,0,0);sedeResArrayList.add(sedeRes5);
+                SedeRes sedeRes6 = new SedeRes(3,6,"APURIMAC-ANDAHUAYLAS",15,3,3,0,0,0,0,0,0);sedeResArrayList.add(sedeRes6);
+                SedeRes sedeRes7 = new SedeRes(3,7,"AREQUIPA",52,9,8,0,0,0,0,0,0);sedeResArrayList.add(sedeRes7);
+                SedeRes sedeRes8 = new SedeRes(3,8,"AYACUCHO-HUAMANGA",33,7,5,0,0,0,0,0,0);sedeResArrayList.add(sedeRes8);
+                SedeRes sedeRes9 = new SedeRes(3,9,"AYACUCHO-PUQUIO",12,4,4,0,0,0,0,0,0);sedeResArrayList.add(sedeRes9);
+                SedeRes sedeRes10 = new SedeRes(3,10,"CAJAMARCA-CAJAMARCA",71,14,13,0,0,0,0,0,0);sedeResArrayList.add(sedeRes10);
+                SedeRes sedeRes11 = new SedeRes(3,11,"CAJAMARCA-JAEN",26,6,5,0,0,0,0,0,0);sedeResArrayList.add(sedeRes11);
+                SedeRes sedeRes12 = new SedeRes(2,12,"CALLAO",24,5,5,0,0,0,0,0,0);sedeResArrayList.add(sedeRes12);
+                SedeRes sedeRes13 = new SedeRes(3,13,"CUSCO",60,12,9,0,0,0,0,0,0);sedeResArrayList.add(sedeRes13);
+                SedeRes sedeRes14 = new SedeRes(3,14,"HUANCAVELICA",25,6,6,0,0,0,0,0,0);sedeResArrayList.add(sedeRes14);
+                SedeRes sedeRes15 = new SedeRes(3,15,"HUANUCO",42,9,8,0,0,0,0,0,0);sedeResArrayList.add(sedeRes15);
+                SedeRes sedeRes16 = new SedeRes(3,16,"ICA",39,8,6,0,0,0,0,0,0);sedeResArrayList.add(sedeRes16);
+                SedeRes sedeRes17 = new SedeRes(3,17,"JUNIN",63,12,12,0,0,0,0,0,0);sedeResArrayList.add(sedeRes17);
+                SedeRes sedeRes18 = new SedeRes(3,18,"LA LIBERTAD",74,14,11,0,0,0,0,0,0);sedeResArrayList.add(sedeRes18);
+                SedeRes sedeRes19 = new SedeRes(3,19,"LAMBAYEQUE",54,9,6,0,0,0,0,0,0);sedeResArrayList.add(sedeRes19);
+                SedeRes sedeRes20 = new SedeRes(1,20,"LIMA METROPOLITANA",206,33,25,0,0,0,0,0,0);sedeResArrayList.add(sedeRes20);
+                SedeRes sedeRes21 = new SedeRes(1,21,"LIMA PROVINCIA-CAÑETE",16,4,4,0,0,0,0,0,0);sedeResArrayList.add(sedeRes21);
+                SedeRes sedeRes22 = new SedeRes(1,22,"LIMA PROVINCIA-HUACHO",26,4,2,0,0,0,0,0,0);sedeResArrayList.add(sedeRes22);
+                SedeRes sedeRes23 = new SedeRes(3,23,"LORETO-IQUITOS",42,8,6,0,0,0,0,0,0);sedeResArrayList.add(sedeRes23);
+                SedeRes sedeRes24 = new SedeRes(3,24,"LORETO-YURIMAGUAS",9,3,3,0,0,0,0,0,0);sedeResArrayList.add(sedeRes24);
+                SedeRes sedeRes25 = new SedeRes(3,25,"MADRE DE DIOS",6,2,2,0,0,0,0,0,0);sedeResArrayList.add(sedeRes25);
+                SedeRes sedeRes26 = new SedeRes(3,26,"MOQUEGUA",11,2,2,0,0,0,0,0,0);sedeResArrayList.add(sedeRes26);
+                SedeRes sedeRes27 = new SedeRes(3,27,"PASCO",15,3,3,0,0,0,0,0,0);sedeResArrayList.add(sedeRes27);
+                SedeRes sedeRes28 = new SedeRes(3,28,"PIURA",74,17,13,0,0,0,0,0,0);sedeResArrayList.add(sedeRes28);
+                SedeRes sedeRes29 = new SedeRes(3,29,"PUNO-JULIACA",48,11,9,0,0,0,0,0,0);sedeResArrayList.add(sedeRes29);
+                SedeRes sedeRes30 = new SedeRes(3,30,"PUNO-PUNO",36,8,5,0,0,0,0,0,0);sedeResArrayList.add(sedeRes30);
+                SedeRes sedeRes31 = new SedeRes(3,31,"SAN MARTIN-MOYOBAMBA",17,4,3,0,0,0,0,0,0);sedeResArrayList.add(sedeRes31);
+                SedeRes sedeRes32 = new SedeRes(3,32,"SAN MARTIN-TARAPOTO",27,6,5,0,0,0,0,0,0);sedeResArrayList.add(sedeRes32);
+                SedeRes sedeRes33 = new SedeRes(3,33,"TACNA",16,3,2,0,0,0,0,0,0);sedeResArrayList.add(sedeRes33);
+                SedeRes sedeRes34 = new SedeRes(3,34,"TUMBES",16,3,2,0,0,0,0,0,0);sedeResArrayList.add(sedeRes34);
+                SedeRes sedeRes35 = new SedeRes(3,35,"UCAYALI-PUCALLPA",31,7,5,0,0,0,0,0,0);sedeResArrayList.add(sedeRes35);
+
+                WriteBatch batch2 = db.batch();
+                for (SedeRes sedeRes : sedeResArrayList){
+                    batch2.set(db.collection("resumen").document("resumen_total")
+                                    .collection("sedes_operativas").document(sedeRes.getId_operativa()+"")
+                                    .collection("sedes").document(sedeRes.getIdsede()+""), sedeRes);
+                }
+                batch2.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(MainActivity.this, "sedes resumen subido", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+            }
+        });
+
+        btnResumen2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Data data = new Data(MainActivity.this);
+//                data.open();
+//                ArrayList<LocalRes> localResArrayList = data.getAllCajasLocalResumen(1);
+//                Toast.makeText(MainActivity.this, localResArrayList.get(0).getTotal_ap_imprenta()+"", Toast.LENGTH_SHORT).show();
+//                data.close();
+
+                Data da = new Data(MainActivity.this);
+                da.open();
+                ArrayList<String> idsLocales = da.getIdsLocales();
+                da.close();
+                WriteBatch batch3 = db.batch();
+                for (String idLocal : idsLocales) {
+                    Data data = new Data(MainActivity.this);
+                    data.open();
+                    LocalRes localRes = data.getLocalResumen(idLocal);
+                    batch3.set(db.collection("resumen").document("resumen_total")
+                            .collection("sedes_operativas").document(localRes.getId_operativa()+"")
+                            .collection("sedes").document(localRes.getIdsede()+"")
+                            .collection("locales").document(localRes.getIdlocal()+""), localRes);
+                    data.close();
+                }
+                batch3.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(MainActivity.this, "local resumen subido", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
 
 
         btnActualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cargarMarco();
-
 //                String dni = edtDni.getText().toString();
 //                int edad = Integer.parseInt(edtEdad.getText().toString());
 //                int dia = Integer.parseInt(edtDia.getText().toString());
@@ -759,10 +872,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
     }
 
     public void cargarMarco(){

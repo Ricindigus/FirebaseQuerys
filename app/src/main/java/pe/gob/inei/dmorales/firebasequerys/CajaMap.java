@@ -1,25 +1,26 @@
 package pe.gob.inei.dmorales.firebasequerys;
 
 public class CajaMap {
-    private int cod_barra_caja;
-    private int tipo;
+      private int tipo;
     private int check_reg_ingreso;
+    private int check_reg_salida;
 
-    public CajaMap(int cod_barra_caja, int tipo, int check_reg_ingreso) {
-        this.cod_barra_caja = cod_barra_caja;
+
+    public CajaMap(int tipo, int check_reg_ingreso, int check_reg_salida) {
         this.tipo = tipo;
         this.check_reg_ingreso = check_reg_ingreso;
+        this.check_reg_salida = check_reg_salida;
     }
 
     public CajaMap() {
     }
 
-    public int getCod_barra_caja() {
-        return cod_barra_caja;
+    public int getCheck_reg_salida() {
+        return check_reg_salida;
     }
 
-    public void setCod_barra_caja(int cod_barra_caja) {
-        this.cod_barra_caja = cod_barra_caja;
+    public void setCheck_reg_salida(int check_reg_salida) {
+        this.check_reg_salida = check_reg_salida;
     }
 
     public int getTipo() {

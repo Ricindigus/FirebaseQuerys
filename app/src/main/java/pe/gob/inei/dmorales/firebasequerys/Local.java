@@ -1,27 +1,17 @@
 package pe.gob.inei.dmorales.firebasequerys;
 
 public class Local {
-    private int id_operativa;
     private int idsede;
     private int idlocal;
     private String local;
 
-    public Local(int id_operativa, int idsede, int idlocal, String local) {
-        this.id_operativa = id_operativa;
+    public Local(int idsede, int idlocal, String local) {
         this.idsede = idsede;
         this.idlocal = idlocal;
         this.local = local;
     }
 
     public Local() {
-    }
-
-    public int getId_operativa() {
-        return id_operativa;
-    }
-
-    public void setId_operativa(int id_operativa) {
-        this.id_operativa = id_operativa;
     }
 
     public int getIdsede() {

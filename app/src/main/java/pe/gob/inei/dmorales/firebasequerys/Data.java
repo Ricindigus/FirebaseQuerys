@@ -172,7 +172,6 @@ public class Data {
                 Caja caja = new Caja();
                 caja.set_id(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_id)));
                 caja.setCod_barra_caja(cursor.getString(cursor.getColumnIndex(SQLConstantes.caja_cod_barra_caja)));
-                caja.setId_operativa(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_id_operativa)));
                 caja.setIdsede(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idsede)));
                 caja.setSede(cursor.getString(cursor.getColumnIndex(SQLConstantes.caja_sede)));
                 caja.setIdlocal(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idlocal)));
@@ -215,10 +214,10 @@ public class Data {
             String[] whereArgs = new String[]{String.valueOf(idLocal),String.valueOf(3)};
             cursor = sqLiteDatabase.query(SQLConstantes.tablacajas, null, SQLConstantes.WHERE_CLAUSE_ID_LOCAL + " AND " + SQLConstantes.WHERE_CLAUSE_CAJA_TIPO,whereArgs,null,null,null);
             cursor.moveToFirst();
-            localRes = new LocalRes(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_id_operativa)),
-                    cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idsede)),
+            localRes = new LocalRes(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idsede)),
+                    cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_ccdd)),
                     cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idlocal)),
-                    cursor.getString(cursor.getColumnIndex(SQLConstantes.caja_sede)),
+                    cursor.getString(cursor.getColumnIndex(SQLConstantes.caja_local)),
                     aplicacion,adicionales,1,0,0,0,0,0,0);
         }finally{
             if(cursor != null) cursor.close();
@@ -239,9 +238,8 @@ public class Data {
             int aplicacion = cursor.getCount();
             cursor.moveToNext();
             LocalRes localRes = new LocalRes();
-            localRes.setId_operativa(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_id)));
-            localRes.setIdsede(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_cod_barra_caja)));
-            localRes.setIdlocal(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_id_operativa)));
+            localRes.setIdsede(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idsede)));
+            localRes.setIdlocal(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idlocal)));
             localRes.setLocal(cursor.getString(cursor.getColumnIndex(SQLConstantes.caja_local)));
             localRes.setTotal_ap_imprenta(aplicacion);
             localResArrayList.add(localRes);

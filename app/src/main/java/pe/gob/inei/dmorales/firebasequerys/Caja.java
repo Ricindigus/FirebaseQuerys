@@ -3,7 +3,6 @@ package pe.gob.inei.dmorales.firebasequerys;
 public class Caja {
     private int _id;
     private String cod_barra_caja;
-    private int id_operativa;
     private int idsede;
     private String sede;
     private int idlocal;
@@ -11,10 +10,9 @@ public class Caja {
     private int tipo;
     private int acl;
 
-    public Caja(int _id, String cod_barra_caja, int id_operativa, int idsede, String sede, int idlocal, String local, int tipo, int acl) {
+    public Caja(int _id, String cod_barra_caja, int idsede, String sede, int idlocal, String local, int tipo, int acl) {
         this._id = _id;
         this.cod_barra_caja = cod_barra_caja;
-        this.id_operativa = id_operativa;
         this.idsede = idsede;
         this.sede = sede;
         this.idlocal = idlocal;
@@ -42,13 +40,6 @@ public class Caja {
         this.cod_barra_caja = cod_barra_caja;
     }
 
-    public int getId_operativa() {
-        return id_operativa;
-    }
-
-    public void setId_operativa(int id_operativa) {
-        this.id_operativa = id_operativa;
-    }
 
     public int getIdsede() {
         return idsede;

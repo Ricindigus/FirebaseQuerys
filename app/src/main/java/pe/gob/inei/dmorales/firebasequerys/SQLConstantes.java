@@ -23,9 +23,10 @@ public class SQLConstantes {
     //TABLA CAJAS
     public static String caja_id = "_id";
     public static String caja_cod_barra_caja = "cod_barra_caja";
-    public static String caja_id_operativa = "id_operativa";
     public static String caja_idsede = "idsede";
     public static String caja_sede = "sede";
+    public static String caja_ccdd = "ccdd";
+    public static String caja_departamento = "departamento";
     public static String caja_idlocal = "idlocal";
     public static String caja_local = "local";
     public static String caja_tipo= "tipo";
@@ -35,7 +36,6 @@ public class SQLConstantes {
     public static final String WHERE_CLAUSE_ID = "_id=?";
     public static final String WHERE_CLAUSE_COD_BARRA = "cod_barra_caja=?";
     public static final String WHERE_CLAUSE_CLAVE = "clave=?";
-    public static final String WHERE_CLAUSE_ID_OPERATIVA = "id_operativa=?";
     public static final String WHERE_CLAUSE_ID_SEDE = "idsede=?";
     public static final String WHERE_CLAUSE_ID_LOCAL = "idlocal=?";
     public static final String WHERE_CLAUSE_CAJA_TIPO = "tipo=?";

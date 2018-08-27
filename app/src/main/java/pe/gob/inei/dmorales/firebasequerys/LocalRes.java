@@ -1,8 +1,8 @@
 package pe.gob.inei.dmorales.firebasequerys;
 
 public class LocalRes {
-    private int id_operativa;
     private int idsede;
+    private int ccdd;
     private int idlocal;
     private String local;
     private int total_ap_imprenta;
@@ -15,9 +15,9 @@ public class LocalRes {
     private int avance_ad_salida;
     private int avance_cand_salida;
 
-    public LocalRes(int id_operativa, int idsede, int idlocal, String local, int total_ap_imprenta, int total_ad_imprenta, int total_cand_imprenta, int avance_ap_ingreso, int avance_ad_ingreso, int avance_cand_ingreso, int avance_ap_salida, int avance_ad_salida, int avance_cand_salida) {
-        this.id_operativa = id_operativa;
+    public LocalRes(int idsede, int ccdd, int idlocal, String local, int total_ap_imprenta, int total_ad_imprenta, int total_cand_imprenta, int avance_ap_ingreso, int avance_ad_ingreso, int avance_cand_ingreso, int avance_ap_salida, int avance_ad_salida, int avance_cand_salida) {
         this.idsede = idsede;
+        this.ccdd = ccdd;
         this.idlocal = idlocal;
         this.local = local;
         this.total_ap_imprenta = total_ap_imprenta;
@@ -34,13 +34,6 @@ public class LocalRes {
     public LocalRes() {
     }
 
-    public int getId_operativa() {
-        return id_operativa;
-    }
-
-    public void setId_operativa(int id_operativa) {
-        this.id_operativa = id_operativa;
-    }
 
     public int getIdsede() {
         return idsede;
@@ -136,5 +129,13 @@ public class LocalRes {
 
     public void setAvance_cand_salida(int avance_cand_salida) {
         this.avance_cand_salida = avance_cand_salida;
+    }
+
+    public int getCcdd() {
+        return ccdd;
+    }
+
+    public void setCcdd(int ccdd) {
+        this.ccdd = ccdd;
     }
 }

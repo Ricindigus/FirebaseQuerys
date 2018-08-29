@@ -169,15 +169,13 @@ public class Data {
         try{
             cursor = sqLiteDatabase.query(SQLConstantes.tablacajas, null, SQLConstantes.WHERE_CLAUSE_ID_SEDE,whereArgs,null,null,null);
             while(cursor.moveToNext()){
-                Caja caja = new Caja();
-                caja.set_id(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_id)));
+                Caja caja =  new Caja();
                 caja.setCod_barra_caja(cursor.getString(cursor.getColumnIndex(SQLConstantes.caja_cod_barra_caja)));
+                caja.setIdnacional(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idnacional)));
+                caja.setCcdd(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_ccdd)));
                 caja.setIdsede(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idsede)));
-                caja.setSede(cursor.getString(cursor.getColumnIndex(SQLConstantes.caja_sede)));
                 caja.setIdlocal(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idlocal)));
-                caja.setLocal(cursor.getString(cursor.getColumnIndex(SQLConstantes.caja_local)));
                 caja.setTipo(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_tipo)));
-                caja.setAcl(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_acl)));
                 cajas.add(caja);
             }
         }finally{
@@ -225,28 +223,24 @@ public class Data {
         return localRes;
     }
 
-    public ArrayList<LocalRes> getAllCajasLocalResumen(int idLocal){
-        ArrayList<LocalRes> localResArrayList = new ArrayList<LocalRes>();
-        String[] whereArgs = new String[]{String.valueOf(idLocal),"1"};
-        String[] whereArgs1 = new String[]{String.valueOf(idLocal),"2"};
-        String[] whereArgs2 = new String[]{String.valueOf(idLocal),"3"};
+    public ArrayList<Caja> getAllCajas(){
+        ArrayList<Caja> cajas = new ArrayList<Caja>();
         Cursor cursor = null;
-        Cursor cursor1 = null;
-        Cursor cursor2 = null;
         try{
-            cursor = sqLiteDatabase.query(SQLConstantes.tablacajas, null, SQLConstantes.WHERE_CLAUSE_ID_LOCAL + " AND " + SQLConstantes.WHERE_CLAUSE_CAJA_TIPO,whereArgs,null,null,null);
-            int aplicacion = cursor.getCount();
-            cursor.moveToNext();
-            LocalRes localRes = new LocalRes();
-            localRes.setIdsede(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idsede)));
-            localRes.setIdlocal(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idlocal)));
-            localRes.setLocal(cursor.getString(cursor.getColumnIndex(SQLConstantes.caja_local)));
-            localRes.setTotal_ap_imprenta(aplicacion);
-            localResArrayList.add(localRes);
+            cursor = sqLiteDatabase.query(SQLConstantes.tablacajas, null, null,null,null,null,null);
+            while (cursor.moveToNext()){
+                Caja caja =  new Caja();
+                caja.setCod_barra_caja(cursor.getString(cursor.getColumnIndex(SQLConstantes.caja_cod_barra_caja)));
+                caja.setIdnacional(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idnacional)));
+                caja.setIdsede(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idsede)));
+                caja.setIdlocal(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idlocal)));
+                caja.setTipo(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_tipo)));
+                cajas.add(caja);
+            }
         }finally{
             if(cursor != null) cursor.close();
         }
-        return localResArrayList;
+        return cajas;
     }
 
 

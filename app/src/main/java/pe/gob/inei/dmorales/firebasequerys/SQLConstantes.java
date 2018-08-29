@@ -23,10 +23,11 @@ public class SQLConstantes {
     //TABLA CAJAS
     public static String caja_id = "_id";
     public static String caja_cod_barra_caja = "cod_barra_caja";
-    public static String caja_idsede = "idsede";
-    public static String caja_sede = "sede";
+    public static String caja_idnacional = "idnacional";
     public static String caja_ccdd = "ccdd";
     public static String caja_departamento = "departamento";
+    public static String caja_idsede = "idsede";
+    public static String caja_sede = "sede";
     public static String caja_idlocal = "idlocal";
     public static String caja_local = "local";
     public static String caja_tipo= "tipo";

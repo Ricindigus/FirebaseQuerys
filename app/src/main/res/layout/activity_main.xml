@@ -72,17 +72,17 @@
             android:id="@+id/btn_enviar1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="enviar sedes"/>
+            android:text="enviar cajas 1"/>
         <Button
             android:id="@+id/btn_enviar2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="enviar locales"/>
+            android:text="enviar cajas 2"/>
         <Button
             android:id="@+id/btn_enviar3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="enviar cajas "/>
+            android:text="enviar cajas 3"/>
         <Button
             android:id="@+id/btn_actualizar"
             android:layout_width="match_parent"

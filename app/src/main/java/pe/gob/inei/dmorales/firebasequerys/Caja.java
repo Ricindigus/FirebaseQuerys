@@ -1,35 +1,53 @@
 package pe.gob.inei.dmorales.firebasequerys;
 
 public class Caja {
-    private int _id;
     private String cod_barra_caja;
+    private int idnacional;
+    private int ccdd;
     private int idsede;
-    private String sede;
     private int idlocal;
-    private String local;
     private int tipo;
-    private int acl;
+    private int check_reg_ingreso;
+    private int check_reg_salida;
 
-    public Caja(int _id, String cod_barra_caja, int idsede, String sede, int idlocal, String local, int tipo, int acl) {
-        this._id = _id;
+
+    public Caja(String cod_barra_caja, int idnacional, int ccdd, int idsede, int idlocal, int tipo) {
         this.cod_barra_caja = cod_barra_caja;
+        this.idnacional = idnacional;
+        this.ccdd = ccdd;
         this.idsede = idsede;
-        this.sede = sede;
         this.idlocal = idlocal;
-        this.local = local;
         this.tipo = tipo;
-        this.acl = acl;
+        this.check_reg_ingreso = 0;
+        this.check_reg_salida = 0;
     }
 
     public Caja() {
     }
 
-    public int get_id() {
-        return _id;
+
+    public int getCcdd() {
+        return ccdd;
     }
 
-    public void set_id(int _id) {
-        this._id = _id;
+    public void setCcdd(int ccdd) {
+        this.ccdd = ccdd;
+    }
+
+    public int getCheck_reg_ingreso() {
+        return check_reg_ingreso;
+    }
+
+    public void setCheck_reg_ingreso(int check_reg_ingreso) {
+        this.check_reg_ingreso = check_reg_ingreso;
+    }
+
+    public int getCheck_reg_salida() {
+        return check_reg_salida;
+    }
+
+    public void setCheck_reg_salida(int check_reg_salida) {
+        this.check_reg_salida = check_reg_salida;
     }
 
     public String getCod_barra_caja() {
@@ -40,6 +58,13 @@ public class Caja {
         this.cod_barra_caja = cod_barra_caja;
     }
 
+    public int getIdnacional() {
+        return idnacional;
+    }
+
+    public void setIdnacional(int idnacional) {
+        this.idnacional = idnacional;
+    }
 
     public int getIdsede() {
         return idsede;
@@ -47,14 +72,6 @@ public class Caja {
 
     public void setIdsede(int idsede) {
         this.idsede = idsede;
-    }
-
-    public String getSede() {
-        return sede;
-    }
-
-    public void setSede(String sede) {
-        this.sede = sede;
     }
 
     public int getIdlocal() {
@@ -65,27 +82,11 @@ public class Caja {
         this.idlocal = idlocal;
     }
 
-    public String getLocal() {
-        return local;
-    }
-
-    public void setLocal(String local) {
-        this.local = local;
-    }
-
     public int getTipo() {
         return tipo;
     }
 
     public void setTipo(int tipo) {
         this.tipo = tipo;
-    }
-
-    public int getAcl() {
-        return acl;
-    }
-
-    public void setAcl(int acl) {
-        this.acl = acl;
     }
 }

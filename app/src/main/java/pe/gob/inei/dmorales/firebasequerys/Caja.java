@@ -1,37 +1,58 @@
 package pe.gob.inei.dmorales.firebasequerys;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Caja {
     private String cod_barra_caja;
     private int idnacional;
-    private int ccdd;
-    private int idsede;
+    private String ccdd;
+    private String idsede;
     private int idlocal;
     private int tipo;
+    private int nlado;
     private int check_reg_ingreso;
     private int check_reg_salida;
 
 
-    public Caja(String cod_barra_caja, int idnacional, int ccdd, int idsede, int idlocal, int tipo) {
+    public Caja(String cod_barra_caja, int idnacional, String ccdd, String idsede, int idlocal, int tipo, int nlado, int check_reg_ingreso, int check_reg_salida) {
         this.cod_barra_caja = cod_barra_caja;
         this.idnacional = idnacional;
         this.ccdd = ccdd;
         this.idsede = idsede;
         this.idlocal = idlocal;
         this.tipo = tipo;
-        this.check_reg_ingreso = 0;
-        this.check_reg_salida = 0;
+        this.nlado = nlado;
+        this.check_reg_ingreso = check_reg_ingreso;
+        this.check_reg_salida = check_reg_salida;
     }
 
     public Caja() {
     }
 
 
-    public int getCcdd() {
+    public int getNlado() {
+        return nlado;
+    }
+
+    public void setNlado(int nlado) {
+        this.nlado = nlado;
+    }
+
+    public String getIdsede() {
+        return idsede;
+    }
+
+    public String getCcdd() {
         return ccdd;
     }
 
-    public void setCcdd(int ccdd) {
+    public void setCcdd(String ccdd) {
         this.ccdd = ccdd;
+    }
+
+    public void setIdsede(String idsede) {
+        this.idsede = idsede;
     }
 
     public int getCheck_reg_ingreso() {
@@ -66,14 +87,6 @@ public class Caja {
         this.idnacional = idnacional;
     }
 
-    public int getIdsede() {
-        return idsede;
-    }
-
-    public void setIdsede(int idsede) {
-        this.idsede = idsede;
-    }
-
     public int getIdlocal() {
         return idlocal;
     }
@@ -88,5 +101,19 @@ public class Caja {
 
     public void setTipo(int tipo) {
         this.tipo = tipo;
+    }
+
+
+    public Map<String, Object> toMap(){
+        Map<String, Object> caja = new HashMap<>();
+        caja.put("idnacional", idnacional);
+        caja.put("ccdd", ccdd);
+        caja.put("idsede", idsede);
+        caja.put("idlocal", idlocal);
+        caja.put("tipo", tipo);
+        caja.put("nlado", nlado);
+        caja.put("check_reg_ingreso", 0);
+        caja.put("check_reg_salida", 0);
+        return caja;
     }
 }

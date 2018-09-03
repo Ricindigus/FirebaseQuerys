@@ -1,8 +1,8 @@
 package pe.gob.inei.dmorales.firebasequerys;
 
 public class LocalRes {
-    private int idsede;
-    private int ccdd;
+    private String idsede;
+    private String ccdd;
     private int idlocal;
     private String local;
     private int total_ap_imprenta;
@@ -15,7 +15,7 @@ public class LocalRes {
     private int avance_ad_salida;
     private int avance_cand_salida;
 
-    public LocalRes(int idsede, int ccdd, int idlocal, String local, int total_ap_imprenta, int total_ad_imprenta, int total_cand_imprenta, int avance_ap_ingreso, int avance_ad_ingreso, int avance_cand_ingreso, int avance_ap_salida, int avance_ad_salida, int avance_cand_salida) {
+    public LocalRes(String idsede, String ccdd, int idlocal, String local, int total_ap_imprenta, int total_ad_imprenta, int total_cand_imprenta, int avance_ap_ingreso, int avance_ad_ingreso, int avance_cand_ingreso, int avance_ap_salida, int avance_ad_salida, int avance_cand_salida) {
         this.idsede = idsede;
         this.ccdd = ccdd;
         this.idlocal = idlocal;
@@ -35,11 +35,11 @@ public class LocalRes {
     }
 
 
-    public int getIdsede() {
+    public String getIdsede() {
         return idsede;
     }
 
-    public void setIdsede(int idsede) {
+    public void setIdsede(String idsede) {
         this.idsede = idsede;
     }
 
@@ -131,11 +131,11 @@ public class LocalRes {
         this.avance_cand_salida = avance_cand_salida;
     }
 
-    public int getCcdd() {
+    public String getCcdd() {
         return ccdd;
     }
 
-    public void setCcdd(int ccdd) {
+    public void setCcdd(String ccdd) {
         this.ccdd = ccdd;
     }
 }

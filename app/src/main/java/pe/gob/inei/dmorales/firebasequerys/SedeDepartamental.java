@@ -1,7 +1,7 @@
 package pe.gob.inei.dmorales.firebasequerys;
 
 public class SedeDepartamental {
-    private int idsede;
+    private String idsede;
     private String sede;
     private int total_ap_imprenta;
     private int total_ad_imprenta;
@@ -13,7 +13,7 @@ public class SedeDepartamental {
     private int avance_ad_salida;
     private int avance_cand_salida;
 
-    public SedeDepartamental(int idsede, String sede, int total_ap_imprenta, int total_ad_imprenta, int total_cand_imprenta, int avance_ap_ingreso, int avance_ad_ingreso, int avance_cand_ingreso, int avance_ap_salida, int avance_ad_salida, int avance_cand_salida) {
+    public SedeDepartamental(String idsede, String sede, int total_ap_imprenta, int total_ad_imprenta, int total_cand_imprenta, int avance_ap_ingreso, int avance_ad_ingreso, int avance_cand_ingreso, int avance_ap_salida, int avance_ad_salida, int avance_cand_salida) {
         this.idsede = idsede;
         this.sede = sede;
         this.total_ap_imprenta = total_ap_imprenta;
@@ -27,11 +27,11 @@ public class SedeDepartamental {
         this.avance_cand_salida = avance_cand_salida;
     }
 
-    public int getIdsede() {
+    public String getIdsede() {
         return idsede;
     }
 
-    public void setIdsede(int idsede) {
+    public void setIdsede(String idsede) {
         this.idsede = idsede;
     }
 

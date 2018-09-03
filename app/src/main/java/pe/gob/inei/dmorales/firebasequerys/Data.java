@@ -162,9 +162,9 @@ public class Data {
         return usuario;
     }
 
-    public ArrayList<Caja> getAllCajasxSede(int idSede){
+    public ArrayList<Caja> getAllCajasxSede(String idSede){
         ArrayList<Caja> cajas = new ArrayList<Caja>();
-        String[] whereArgs = new String[]{String.valueOf(idSede)};
+        String[] whereArgs = new String[]{idSede};
         Cursor cursor = null;
         try{
             cursor = sqLiteDatabase.query(SQLConstantes.tablacajas, null, SQLConstantes.WHERE_CLAUSE_ID_SEDE,whereArgs,null,null,null);
@@ -172,9 +172,10 @@ public class Data {
                 Caja caja =  new Caja();
                 caja.setCod_barra_caja(cursor.getString(cursor.getColumnIndex(SQLConstantes.caja_cod_barra_caja)));
                 caja.setIdnacional(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idnacional)));
-                caja.setCcdd(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_ccdd)));
-                caja.setIdsede(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idsede)));
+                caja.setCcdd(cursor.getString(cursor.getColumnIndex(SQLConstantes.caja_ccdd)));
+                caja.setIdsede(cursor.getString(cursor.getColumnIndex(SQLConstantes.caja_idsede)));
                 caja.setIdlocal(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idlocal)));
+                caja.setNlado(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_nlado)));
                 caja.setTipo(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_tipo)));
                 cajas.add(caja);
             }
@@ -212,8 +213,8 @@ public class Data {
             String[] whereArgs = new String[]{String.valueOf(idLocal),String.valueOf(3)};
             cursor = sqLiteDatabase.query(SQLConstantes.tablacajas, null, SQLConstantes.WHERE_CLAUSE_ID_LOCAL + " AND " + SQLConstantes.WHERE_CLAUSE_CAJA_TIPO,whereArgs,null,null,null);
             cursor.moveToFirst();
-            localRes = new LocalRes(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idsede)),
-                    cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_ccdd)),
+            localRes = new LocalRes(cursor.getString(cursor.getColumnIndex(SQLConstantes.caja_idsede)),
+                    cursor.getString(cursor.getColumnIndex(SQLConstantes.caja_ccdd)),
                     cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idlocal)),
                     cursor.getString(cursor.getColumnIndex(SQLConstantes.caja_local)),
                     aplicacion,adicionales,1,0,0,0,0,0,0);
@@ -232,9 +233,10 @@ public class Data {
                 Caja caja =  new Caja();
                 caja.setCod_barra_caja(cursor.getString(cursor.getColumnIndex(SQLConstantes.caja_cod_barra_caja)));
                 caja.setIdnacional(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idnacional)));
-                caja.setIdsede(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idsede)));
+                caja.setIdsede(cursor.getString(cursor.getColumnIndex(SQLConstantes.caja_idsede)));
                 caja.setIdlocal(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idlocal)));
                 caja.setTipo(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_tipo)));
+                caja.setNlado(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_nlado)));
                 cajas.add(caja);
             }
         }finally{
@@ -259,9 +261,9 @@ public class Data {
         return locales;
     }
 
-    public int getNroCajasxSede(int idSede,int tipo){
+    public int getNroCajasxSede(String idSede,int tipo){
         int numero = 0;
-        String[] whereArgs = new String[]{String.valueOf(idSede),String.valueOf(tipo)};
+        String[] whereArgs = new String[]{idSede,String.valueOf(tipo)};
         Cursor cursor = null;
         try{
             cursor = sqLiteDatabase.query(SQLConstantes.tablacajas, null, SQLConstantes.WHERE_CLAUSE_ID_SEDE + " AND " + SQLConstantes.WHERE_CLAUSE_CAJA_TIPO,whereArgs,null,null,null);

@@ -31,6 +31,7 @@ public class SQLConstantes {
     public static String caja_idlocal = "idlocal";
     public static String caja_local = "local";
     public static String caja_tipo= "tipo";
+    public static String caja_nlado = "nlado";
     public static String caja_acl = "acl";
 
     //CLAUSULA WHERE

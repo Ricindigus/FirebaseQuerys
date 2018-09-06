@@ -5,6 +5,9 @@ public class SQLConstantes {
     public static String DB_NAME = "mydatabase.sqlite";
 
     public static String tablacajas = "cajas";
+    public static String tablaasistencia = "asistencia";
+    public static String tablainventario = "inventario";
+
     public static String tablausuariolocal = "usuario_local";
 
     //TABLA USUARIO LOCAL
@@ -33,6 +36,33 @@ public class SQLConstantes {
     public static String caja_tipo= "tipo";
     public static String caja_nlado = "nlado";
     public static String caja_acl = "acl";
+
+
+
+    public static String asistencia_dni = "dni";
+    public static String asistencia_idnacional = "idnacional";
+    public static String asistencia_ccdd = "ccdd";
+    public static String asistencia_idsede = "idsede";
+    public static String asistencia_idlocal = "idlocal";
+    public static String asistencia_nombres = "nombres";
+    public static String asistencia_ape_paterno = "ape_paterno";
+    public static String asistencia_ape_materno = "ape_materno";
+    public static String asistencia_prioridad = "prioridad";
+
+
+
+    public static String inventario_codigo = "codigo";
+    public static String inventario_tipo = "tipo";
+    public static String inventario_idnacional = "idnacional";
+    public static String inventario_ccdd = "ccdd";
+    public static String inventario_idsede = "idsede";
+    public static String inventario_idlocal = "idlocal";
+    public static String inventario_dni = "dni";
+    public static String inventario_nombres = "nombres";
+    public static String inventario_ape_paterno = "ape_paterno";
+    public static String inventario_ape_materno = "ape_materno";
+    public static String inventario_naula = "naula";
+    public static String inventario_codpagina = "codpagina";
 
     //CLAUSULA WHERE
     public static final String WHERE_CLAUSE_ID = "_id=?";

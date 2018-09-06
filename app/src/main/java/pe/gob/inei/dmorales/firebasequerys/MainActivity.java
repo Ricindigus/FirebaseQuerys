@@ -26,6 +26,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.opencensus.tags.TagContext;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -297,25 +299,77 @@ public class MainActivity extends AppCompatActivity {
         btnResumen2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                Data da = new Data(MainActivity.this);
+//                da.open();
+//                ArrayList<String> idsLocales = da.getIdsLocales();
+//                da.close();
+//                WriteBatch batch3 = db.batch();
+//                for (String idLocal : idsLocales) {
+//                    Data data = new Data(MainActivity.this);
+//                    data.open();
+//                    LocalRes localRes = data.getLocalResumen(idLocal);
+//                    batch3.set(db.collection("resumen").document("resumen_total")
+//                            .collection("locales").document(localRes.getIdlocal()+""), localRes);
+//                    data.close();
+//                }
+//                batch3.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
+//                    @Override
+//                    public void onSuccess(Void aVoid) {
+//                        Toast.makeText(MainActivity.this, "local resumen subido", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
                 Data da = new Data(MainActivity.this);
                 da.open();
-                ArrayList<String> idsLocales = da.getIdsLocales();
+                ArrayList<Asistencia> asistencias = da.getAllAsistencia(2);
+                ArrayList<Inventario> inventarios = da.getAllInventario();
                 da.close();
-                WriteBatch batch3 = db.batch();
-                for (String idLocal : idsLocales) {
-                    Data data = new Data(MainActivity.this);
-                    data.open();
-                    LocalRes localRes = data.getLocalResumen(idLocal);
-                    batch3.set(db.collection("resumen").document("resumen_total")
-                            .collection("locales").document(localRes.getIdlocal()+""), localRes);
-                    data.close();
+                final int nAsistencias = asistencias.size();
+                final int nInventarios = inventarios.size();
+                int i = 0;
+                for (Asistencia asistencia : asistencias){
+                    i++;
+                    final int j=i;
+                    db.collection("asistencia").document(asistencia.getDni())
+                            .set(asistencia.toMap())
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Log.d("FIREBASE", "DocumentSnapshot successfully written!");
+                                    if(j == nAsistencias){
+                                        Toast.makeText(MainActivity.this, "subido asistencia", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.w("FIREBASE", "Error writing document", e);
+                                }
+                            });
                 }
-                batch3.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(MainActivity.this, "local resumen subido", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                int k = 0;
+                for (Inventario inventario : inventarios){
+                    k++;
+                    final int j=k;
+                    db.collection("inventario").document(inventario.getCodigo())
+                            .set(inventario.toMap())
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Log.d("FIREBASE", "DocumentSnapshot successfully written!");
+                                    if(j == nInventarios){
+                                        Toast.makeText(MainActivity.this, "subido inventario", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.w("FIREBASE", "Error writing document", e);
+                                }
+                            });
+                }
+
             }
         });
 

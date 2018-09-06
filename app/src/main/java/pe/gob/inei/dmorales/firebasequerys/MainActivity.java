@@ -321,10 +321,10 @@ public class MainActivity extends AppCompatActivity {
                 Data da = new Data(MainActivity.this);
                 da.open();
                 ArrayList<Asistencia> asistencias = da.getAllAsistencia(2);
-                ArrayList<Inventario> inventarios = da.getAllInventario();
+//                ArrayList<Inventario> inventarios = da.getAllInventario();
                 da.close();
                 final int nAsistencias = asistencias.size();
-                final int nInventarios = inventarios.size();
+//                final int nInventarios = inventarios.size();
                 int i = 0;
                 for (Asistencia asistencia : asistencias){
                     i++;
@@ -347,28 +347,50 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             });
                 }
-                int k = 0;
-                for (Inventario inventario : inventarios){
-                    k++;
-                    final int j=k;
-                    db.collection("inventario").document(inventario.getCodigo())
-                            .set(inventario.toMap())
-                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    Log.d("FIREBASE", "DocumentSnapshot successfully written!");
-                                    if(j == nInventarios){
-                                        Toast.makeText(MainActivity.this, "subido inventario", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Log.w("FIREBASE", "Error writing document", e);
-                                }
-                            });
-                }
+//                int k = 0;
+//                for (Inventario inventario : inventarios){
+//                    k++;
+//                    final int j=k;
+//                    String idDocumento;
+//                    if (inventario.getTipo() == 3){
+//                        idDocumento = inventario.getCodigo();
+//                        db.collection("inventario").document(idDocumento).set(inventario.toMapLista())
+//                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                    @Override
+//                                    public void onSuccess(Void aVoid) {
+//                                        Log.d("FIREBASE", "DocumentSnapshot successfully written!");
+//                                        if(j == nInventarios){
+//                                            Toast.makeText(MainActivity.this, "subido inventario", Toast.LENGTH_SHORT).show();
+//                                        }
+//                                    }
+//                                })
+//                                .addOnFailureListener(new OnFailureListener() {
+//                                    @Override
+//                                    public void onFailure(@NonNull Exception e) {
+//                                        Log.w("FIREBASE", "Error writing document", e);
+//                                    }
+//                                });
+//                    }else{
+//                        idDocumento = inventario.getTipo() + "" + inventario.getCodigo();
+//                        db.collection("inventario").document(idDocumento).set(inventario.toMap())
+//                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                    @Override
+//                                    public void onSuccess(Void aVoid) {
+//                                        Log.d("FIREBASE", "DocumentSnapshot successfully written!");
+//                                        if(j == nInventarios){
+//                                            Toast.makeText(MainActivity.this, "subido inventario", Toast.LENGTH_SHORT).show();
+//                                        }
+//                                    }
+//                                })
+//                                .addOnFailureListener(new OnFailureListener() {
+//                                    @Override
+//                                    public void onFailure(@NonNull Exception e) {
+//                                        Log.w("FIREBASE", "Error writing document", e);
+//                                    }
+//                                });
+//                    }
+//
+//                }
 
             }
         });

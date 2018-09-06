@@ -48,6 +48,7 @@ public class SQLConstantes {
     public static String asistencia_ape_paterno = "ape_paterno";
     public static String asistencia_ape_materno = "ape_materno";
     public static String asistencia_prioridad = "prioridad";
+    public static String asistencia_naula = "naula";
 
 
 

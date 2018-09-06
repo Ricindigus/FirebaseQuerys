@@ -9,17 +9,19 @@ public class Asistencia {
     private String ccdd;
     private String idsede;
     private int idlocal;
+    private int naula;
     private String nombres;
     private String ape_paterno;
     private String ape_materno;
     private String prioridad;
 
-    public Asistencia(String dni, String idnacional, String ccdd, String idsede, int idlocal, String nombres, String ape_paterno, String ape_materno, String prioridad) {
+    public Asistencia(String dni, String idnacional, String ccdd, String idsede, int idlocal, int naula, String nombres, String ape_paterno, String ape_materno, String prioridad) {
         this.dni = dni;
         this.idnacional = idnacional;
         this.ccdd = ccdd;
         this.idsede = idsede;
         this.idlocal = idlocal;
+        this.naula = naula;
         this.nombres = nombres;
         this.ape_paterno = ape_paterno;
         this.ape_materno = ape_materno;
@@ -27,6 +29,14 @@ public class Asistencia {
     }
 
     public Asistencia() {
+    }
+
+    public int getNaula() {
+        return naula;
+    }
+
+    public void setNaula(int naula) {
+        this.naula = naula;
     }
 
     public String getDni() {
@@ -111,7 +121,9 @@ public class Asistencia {
         asistencia.put("ape_paterno", ape_paterno);
         asistencia.put("ape_materno", ape_materno);
         asistencia.put("prioridad", prioridad);
-        asistencia.put("check_registro", 0);
+        asistencia.put("naula", naula);
+        asistencia.put("check_registro_local", 0);
+        asistencia.put("check_registro_aula", 0);
         return asistencia;
     }
 }

@@ -131,8 +131,21 @@ public class Inventario {
         this.codpagina = codpagina;
     }
 
+    public Map<String, Object> toMapLista(){
+        Map<String, Object> inventario = new HashMap<>();
+        inventario.put("idnacional", idnacional);
+        inventario.put("ccdd", ccdd);
+        inventario.put("idsede", idsede);
+        inventario.put("idlocal", idlocal);
+        inventario.put("naula", naula);
+        inventario.put("tipo", tipo);
+        inventario.put("check_registro", 0);
+        return inventario;
+    }
+
     public Map<String, Object> toMap(){
         Map<String, Object> inventario = new HashMap<>();
+        inventario.put("codigo", codigo);
         inventario.put("idnacional", idnacional);
         inventario.put("ccdd", ccdd);
         inventario.put("idsede", idsede);

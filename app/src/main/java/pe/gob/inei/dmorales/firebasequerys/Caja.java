@@ -11,11 +11,10 @@ public class Caja {
     private int idlocal;
     private int tipo;
     private int nlado;
-    private int check_reg_ingreso;
-    private int check_reg_salida;
+    private int check_registro;
 
 
-    public Caja(String cod_barra_caja, int idnacional, String ccdd, String idsede, int idlocal, int tipo, int nlado, int check_reg_ingreso, int check_reg_salida) {
+    public Caja(String cod_barra_caja, int idnacional, String ccdd, String idsede, int idlocal, int tipo, int nlado, int check_registro) {
         this.cod_barra_caja = cod_barra_caja;
         this.idnacional = idnacional;
         this.ccdd = ccdd;
@@ -23,8 +22,7 @@ public class Caja {
         this.idlocal = idlocal;
         this.tipo = tipo;
         this.nlado = nlado;
-        this.check_reg_ingreso = check_reg_ingreso;
-        this.check_reg_salida = check_reg_salida;
+        this.check_registro = check_registro;
     }
 
     public Caja() {
@@ -55,20 +53,12 @@ public class Caja {
         this.idsede = idsede;
     }
 
-    public int getCheck_reg_ingreso() {
-        return check_reg_ingreso;
+    public int getCheck_registro() {
+        return check_registro;
     }
 
-    public void setCheck_reg_ingreso(int check_reg_ingreso) {
-        this.check_reg_ingreso = check_reg_ingreso;
-    }
-
-    public int getCheck_reg_salida() {
-        return check_reg_salida;
-    }
-
-    public void setCheck_reg_salida(int check_reg_salida) {
-        this.check_reg_salida = check_reg_salida;
+    public void setCheck_registro(int check_registro) {
+        this.check_registro = check_registro;
     }
 
     public String getCod_barra_caja() {
@@ -112,8 +102,7 @@ public class Caja {
         caja.put("idlocal", idlocal);
         caja.put("tipo", tipo);
         caja.put("nlado", nlado);
-        caja.put("check_reg_ingreso", 0);
-        caja.put("check_reg_salida", 0);
+        caja.put("check_registro", 0);
         return caja;
     }
 }

@@ -81,21 +81,32 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Data data =  new Data(MainActivity.this);
                 data.open();
+//                for (int i = 1; i <= 10 ; i++) {
+//                    final int c = i;
+//                    ArrayList<Caja> cajas = data.getAllCajasxSede(checkDigito(i));
+//                    WriteBatch batch = db.batch();
+//                    for (Caja caja: cajas){
+//                        batch.set(db.collection("cajas").document(caja.getCod_barra_caja()),caja.toMap());
+//                    }
+//                    batch.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
+//                        @Override
+//                        public void onSuccess(Void aVoid) {
+//                            Toast.makeText(MainActivity.this, "Subidos correctamente " + c, Toast.LENGTH_SHORT).show();
+//                        }
+//                    });
+//                }
 
-                for (int i = 1; i <= 10 ; i++) {
-                    final int c = i;
-                    ArrayList<Caja> cajas = data.getAllCajasxSede(checkDigito(i));
-                    WriteBatch batch = db.batch();
-                    for (Caja caja: cajas){
-                        batch.set(db.collection("cajas").document(caja.getCod_barra_caja()),caja.toMap());
-                    }
-                    batch.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(MainActivity.this, "Subidos correctamente " + c, Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                ArrayList<Caja> cajas = data.getAllCajasxLocal(2);
+                WriteBatch batch = db.batch();
+                for (Caja caja: cajas){
+                    batch.set(db.collection("cajas").document(caja.getCod_barra_caja()),caja.toMap());
                 }
+                batch.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(MainActivity.this, "Subidos correctamente ", Toast.LENGTH_SHORT).show();
+                    }
+                });
                 data.close();
             }
         });
@@ -299,54 +310,56 @@ public class MainActivity extends AppCompatActivity {
         btnResumen2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Data da = new Data(MainActivity.this);
-//                da.open();
-//                ArrayList<String> idsLocales = da.getIdsLocales();
-//                da.close();
-//                WriteBatch batch3 = db.batch();
-//                for (String idLocal : idsLocales) {
-//                    Data data = new Data(MainActivity.this);
-//                    data.open();
-//                    LocalRes localRes = data.getLocalResumen(idLocal);
-//                    batch3.set(db.collection("resumen").document("resumen_total")
-//                            .collection("locales").document(localRes.getIdlocal()+""), localRes);
-//                    data.close();
-//                }
-//                batch3.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void aVoid) {
-//                        Toast.makeText(MainActivity.this, "local resumen subido", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
                 Data da = new Data(MainActivity.this);
                 da.open();
-                ArrayList<Asistencia> asistencias = da.getAllAsistencia(2);
-//                ArrayList<Inventario> inventarios = da.getAllInventario();
+                ArrayList<String> idsLocales = da.getIdsLocales();
                 da.close();
-                final int nAsistencias = asistencias.size();
-//                final int nInventarios = inventarios.size();
-                int i = 0;
-                for (Asistencia asistencia : asistencias){
-                    i++;
-                    final int j=i;
-                    db.collection("asistencia").document(asistencia.getDni())
-                            .set(asistencia.toMap())
-                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    Log.d("FIREBASE", "DocumentSnapshot successfully written!");
-                                    if(j == nAsistencias){
-                                        Toast.makeText(MainActivity.this, "subido asistencia", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Log.w("FIREBASE", "Error writing document", e);
-                                }
-                            });
+                WriteBatch batch3 = db.batch();
+                for (String idLocal : idsLocales) {
+                    Data data = new Data(MainActivity.this);
+                    data.open();
+                    LocalRes localRes = data.getLocalResumen(idLocal);
+                    batch3.set(db.collection("resumen").document("resumen_total")
+                            .collection("locales").document(localRes.getIdlocal() + ""), localRes);
+                    data.close();
                 }
+                batch3.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(MainActivity.this, "local resumen subido", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+//                Data da = new Data(MainActivity.this);
+//                da.open();
+//                ArrayList<Asistencia> asistencias = da.getAllAsistencia(2);
+//                ArrayList<Inventario> inventarios = da.getAllInventario(2);
+//                da.close();
+//                final int nAsistencias = asistencias.size();
+//                final int nInventarios = inventarios.size();
+//                int i = 0;
+//                for (Asistencia asistencia : asistencias) {
+//                    i++;
+//                    final int j = i;
+//                    db.collection("asistencia").document(asistencia.getDni())
+//                            .set(asistencia.toMap())
+//                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                @Override
+//                                public void onSuccess(Void aVoid) {
+//                                    Log.d("FIREBASE", "DocumentSnapshot successfully written!");
+//                                    if (j == nAsistencias) {
+//                                        Toast.makeText(MainActivity.this, "subido asistencia", Toast.LENGTH_SHORT).show();
+//                                    }
+//                                }
+//                            })
+//                            .addOnFailureListener(new OnFailureListener() {
+//                                @Override
+//                                public void onFailure(@NonNull Exception e) {
+//                                    Log.w("FIREBASE", "Error writing document", e);
+//                                }
+//                            });
+//                }
+
 //                int k = 0;
 //                for (Inventario inventario : inventarios){
 //                    k++;
@@ -389,9 +402,7 @@ public class MainActivity extends AppCompatActivity {
 //                                    }
 //                                });
 //                    }
-//
 //                }
-
             }
         });
 
@@ -415,7 +426,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("File", filename);
                 Toast.makeText(MainActivity.this, "Cargando..." + filename, Toast.LENGTH_SHORT).show();
                 try {
-                    Data data = new Data(MainActivity.this,filename);
+                    Data data = new Data(MainActivity.this,1);
                     data.open();
                 } catch (IOException e) {
                     e.printStackTrace();

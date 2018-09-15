@@ -1,7 +1,7 @@
 package pe.gob.inei.dmorales.firebasequerys;
 
 public class CajaMap {
-      private int tipo;
+    private int tipo;
     private int check_reg_ingreso;
     private int check_reg_salida;
 

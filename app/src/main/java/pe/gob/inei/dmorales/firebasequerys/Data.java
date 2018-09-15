@@ -185,6 +185,29 @@ public class Data {
         return cajas;
     }
 
+    public ArrayList<Caja> getAllCajasxLocal(int idLocal){
+        ArrayList<Caja> cajas = new ArrayList<Caja>();
+        String[] whereArgs = new String[]{String.valueOf(idLocal)};
+        Cursor cursor = null;
+        try{
+            cursor = sqLiteDatabase.query(SQLConstantes.tablacajas, null, SQLConstantes.WHERE_CLAUSE_ID_LOCAL,whereArgs,null,null,null);
+            while(cursor.moveToNext()){
+                Caja caja =  new Caja();
+                caja.setCod_barra_caja(cursor.getString(cursor.getColumnIndex(SQLConstantes.caja_cod_barra_caja)));
+                caja.setIdnacional(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idnacional)));
+                caja.setCcdd(cursor.getString(cursor.getColumnIndex(SQLConstantes.caja_ccdd)));
+                caja.setIdsede(cursor.getString(cursor.getColumnIndex(SQLConstantes.caja_idsede)));
+                caja.setIdlocal(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_idlocal)));
+                caja.setNlado(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_nlado)));
+                caja.setTipo(cursor.getInt(cursor.getColumnIndex(SQLConstantes.caja_tipo)));
+                cajas.add(caja);
+            }
+        }finally{
+            if(cursor != null) cursor.close();
+        }
+        return cajas;
+    }
+
 
     public LocalRes getLocalResumen(String idLocal){
         LocalRes localRes = null;
@@ -271,11 +294,12 @@ public class Data {
         return asistencias;
     }
 
-    public ArrayList<Inventario> getAllInventario(){
+    public ArrayList<Inventario> getAllInventario(int nlocal){
         ArrayList<Inventario>  inventarios = new ArrayList<Inventario>();
         Cursor cursor = null;
+        String[] whereArgs = new String[]{String.valueOf(nlocal)};
         try{
-            cursor = sqLiteDatabase.query(SQLConstantes.tablainventario, null, null,null,null,null,null);
+            cursor = sqLiteDatabase.query(SQLConstantes.tablainventario, null, SQLConstantes.WHERE_CLAUSE_ID_LOCAL,whereArgs,null,null,null);
             while (cursor.moveToNext()){
                 Inventario inventario =  new Inventario();
                 inventario.setCodigo(cursor.getString(cursor.getColumnIndex(SQLConstantes.inventario_codigo)));

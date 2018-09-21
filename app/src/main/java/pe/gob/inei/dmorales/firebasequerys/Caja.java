@@ -1,64 +1,53 @@
 package pe.gob.inei.dmorales.firebasequerys;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Caja {
+    private String _id;
     private String cod_barra_caja;
-    private int idnacional;
     private String ccdd;
+    private String departamento;
+    private int idnacional;
     private String idsede;
+    private String nom_sede;
     private int idlocal;
+    private String nom_local;
     private int tipo;
     private int nlado;
-    private int check_registro;
+    private int acl;
+    private String direccion;
 
-
-    public Caja(String cod_barra_caja, int idnacional, String ccdd, String idsede, int idlocal, int tipo, int nlado, int check_registro) {
+    public Caja(String _id, String cod_barra_caja, String ccdd, String departamento, int idnacional, String idsede, String nom_sede, int idlocal, String nom_local, int tipo, int nlado, int acl, String direccion) {
+        this._id = _id;
         this.cod_barra_caja = cod_barra_caja;
-        this.idnacional = idnacional;
         this.ccdd = ccdd;
+        this.departamento = departamento;
+        this.idnacional = idnacional;
         this.idsede = idsede;
+        this.nom_sede = nom_sede;
         this.idlocal = idlocal;
+        this.nom_local = nom_local;
         this.tipo = tipo;
         this.nlado = nlado;
-        this.check_registro = check_registro;
+        this.acl = acl;
+        this.direccion = direccion;
     }
 
     public Caja() {
     }
 
-
-    public int getNlado() {
-        return nlado;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setNlado(int nlado) {
-        this.nlado = nlado;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
-    public String getIdsede() {
-        return idsede;
+    public String get_id() {
+        return _id;
     }
 
-    public String getCcdd() {
-        return ccdd;
-    }
-
-    public void setCcdd(String ccdd) {
-        this.ccdd = ccdd;
-    }
-
-    public void setIdsede(String idsede) {
-        this.idsede = idsede;
-    }
-
-    public int getCheck_registro() {
-        return check_registro;
-    }
-
-    public void setCheck_registro(int check_registro) {
-        this.check_registro = check_registro;
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public String getCod_barra_caja() {
@@ -69,12 +58,44 @@ public class Caja {
         this.cod_barra_caja = cod_barra_caja;
     }
 
+    public String getCcdd() {
+        return ccdd;
+    }
+
+    public void setCcdd(String ccdd) {
+        this.ccdd = ccdd;
+    }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
+    }
+
     public int getIdnacional() {
         return idnacional;
     }
 
     public void setIdnacional(int idnacional) {
         this.idnacional = idnacional;
+    }
+
+    public String getIdsede() {
+        return idsede;
+    }
+
+    public void setIdsede(String idsede) {
+        this.idsede = idsede;
+    }
+
+    public String getNom_sede() {
+        return nom_sede;
+    }
+
+    public void setNom_sede(String nom_sede) {
+        this.nom_sede = nom_sede;
     }
 
     public int getIdlocal() {
@@ -85,6 +106,14 @@ public class Caja {
         this.idlocal = idlocal;
     }
 
+    public String getNom_local() {
+        return nom_local;
+    }
+
+    public void setNom_local(String nom_local) {
+        this.nom_local = nom_local;
+    }
+
     public int getTipo() {
         return tipo;
     }
@@ -93,16 +122,19 @@ public class Caja {
         this.tipo = tipo;
     }
 
+    public int getNlado() {
+        return nlado;
+    }
 
-    public Map<String, Object> toMap(){
-        Map<String, Object> caja = new HashMap<>();
-        caja.put("idnacional", idnacional);
-        caja.put("ccdd", ccdd);
-        caja.put("idsede", idsede);
-        caja.put("idlocal", idlocal);
-        caja.put("tipo", tipo);
-        caja.put("nlado", nlado);
-        caja.put("check_registro", 0);
-        return caja;
+    public void setNlado(int nlado) {
+        this.nlado = nlado;
+    }
+
+    public int getAcl() {
+        return acl;
+    }
+
+    public void setAcl(int acl) {
+        this.acl = acl;
     }
 }

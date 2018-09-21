@@ -96,15 +96,15 @@ public class MainActivity extends AppCompatActivity {
 //                    });
 //                }
 
-                ArrayList<Caja> cajas = data.getAllCajasxLocal(2);
+                ArrayList<Caja> cajas = data.getAllCajasxLocal(1);
                 WriteBatch batch = db.batch();
                 for (Caja caja: cajas){
-                    batch.set(db.collection("cajas").document(caja.getCod_barra_caja()),caja.toMap());
+                    batch.set(db.collection("cajas").document(caja.getCod_barra_caja()),caja);
                 }
                 batch.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(MainActivity.this, "Subidos correctamente ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Subidos correctamente", Toast.LENGTH_SHORT).show();
                     }
                 });
                 data.close();
@@ -118,43 +118,43 @@ public class MainActivity extends AppCompatActivity {
                 Data data =  new Data(MainActivity.this);
                 data.open();
 
-                for (int i = 11; i <= 20 ; i++) {
-                    final int c = i;
-                    ArrayList<Caja> cajas = data.getAllCajasxSede(checkDigito(i));
-                    if(i != 20){
-                        WriteBatch batch = db.batch();
-                        for (Caja caja: cajas){
-                            batch.set(db.collection("cajas").document(caja.getCod_barra_caja()),caja.toMap());
-                        }
-                        batch.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Toast.makeText(MainActivity.this, "Subidos correctamente " + c, Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }else{
-                        WriteBatch batchAux1 = db.batch();
-                        for (int j = 0; j < 400 ; j++) {
-                            batchAux1.set(db.collection("cajas").document(cajas.get(i).getCod_barra_caja()),cajas.get(i).toMap());
-                        }
-                        batchAux1.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Toast.makeText(MainActivity.this, "Subidos correctamente " + c + " parte 1", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                        WriteBatch batchAux2 = db.batch();
-                        for (int j = 400; j < cajas.size() ; j++) {
-                            batchAux2.set(db.collection("cajas").document(cajas.get(i).getCod_barra_caja()),cajas.get(i).toMap());
-                        }
-                        batchAux2.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Toast.makeText(MainActivity.this, "Subidos correctamente " + c + " parte 2", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
-                }
+//                for (int i = 11; i <= 20 ; i++) {
+//                    final int c = i;
+//                    ArrayList<Caja> cajas = data.getAllCajasxSede(checkDigito(i));
+//                    if(i != 20){
+//                        WriteBatch batch = db.batch();
+//                        for (Caja caja: cajas){
+//                            batch.set(db.collection("cajas").document(caja.getCod_barra_caja()),caja.toMap());
+//                        }
+//                        batch.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
+//                            @Override
+//                            public void onSuccess(Void aVoid) {
+//                                Toast.makeText(MainActivity.this, "Subidos correctamente " + c, Toast.LENGTH_SHORT).show();
+//                            }
+//                        });
+//                    }else{
+//                        WriteBatch batchAux1 = db.batch();
+//                        for (int j = 0; j < 400 ; j++) {
+//                            batchAux1.set(db.collection("cajas").document(cajas.get(i).getCod_barra_caja()),cajas.get(i).toMap());
+//                        }
+//                        batchAux1.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
+//                            @Override
+//                            public void onSuccess(Void aVoid) {
+//                                Toast.makeText(MainActivity.this, "Subidos correctamente " + c + " parte 1", Toast.LENGTH_SHORT).show();
+//                            }
+//                        });
+//                        WriteBatch batchAux2 = db.batch();
+//                        for (int j = 400; j < cajas.size() ; j++) {
+//                            batchAux2.set(db.collection("cajas").document(cajas.get(i).getCod_barra_caja()),cajas.get(i).toMap());
+//                        }
+//                        batchAux2.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
+//                            @Override
+//                            public void onSuccess(Void aVoid) {
+//                                Toast.makeText(MainActivity.this, "Subidos correctamente " + c + " parte 2", Toast.LENGTH_SHORT).show();
+//                            }
+//                        });
+//                    }
+//                }
                 data.close();
             }
         });
@@ -167,21 +167,21 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Data data =  new Data(MainActivity.this);
                 data.open();
-
-                for (int i = 21; i <= 35 ; i++) {
-                    final int c = i;
-                    ArrayList<Caja> cajas = data.getAllCajasxSede(checkDigito(i));
-                    WriteBatch batch = db.batch();
-                    for (Caja caja: cajas){
-                        batch.set(db.collection("cajas").document(caja.getCod_barra_caja()),caja.toMap());
-                    }
-                    batch.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(MainActivity.this, "Subidos correctamente " + c, Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
+//
+//                for (int i = 21; i <= 35 ; i++) {
+//                    final int c = i;
+//                    ArrayList<Caja> cajas = data.getAllCajasxSede(checkDigito(i));
+//                    WriteBatch batch = db.batch();
+//                    for (Caja caja: cajas){
+//                        batch.set(db.collection("cajas").document(caja.getCod_barra_caja()),caja.toMap());
+//                    }
+//                    batch.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
+//                        @Override
+//                        public void onSuccess(Void aVoid) {
+//                            Toast.makeText(MainActivity.this, "Subidos correctamente " + c, Toast.LENGTH_SHORT).show();
+//                        }
+//                    });
+//                }
                 data.close();
             }
         });

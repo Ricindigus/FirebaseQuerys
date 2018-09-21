@@ -1,42 +1,50 @@
 package pe.gob.inei.dmorales.firebasequerys;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Asistencia {
+    private String _id;
     private String dni;
-    private String idnacional;
-    private String ccdd;
-    private String idsede;
-    private int idlocal;
-    private int naula;
     private String nombres;
     private String ape_paterno;
     private String ape_materno;
+    private int naula;
+    private String discapacidad;
     private String prioridad;
+    private int idnacional;
+    private String idsede;
+    private String nom_sede;
+    private String ccdd;
+    private String departamento;
+    private int idlocal;
+    private String nom_local;
+    private String direccion;
 
-    public Asistencia(String dni, String idnacional, String ccdd, String idsede, int idlocal, int naula, String nombres, String ape_paterno, String ape_materno, String prioridad) {
+    public Asistencia(String _id, String dni, String nombres, String ape_paterno, String ape_materno, int naula, String discapacidad, String prioridad, int idnacional, String idsede, String nom_sede, String ccdd, String departamento, int idlocal, String nom_local, String direccion) {
+        this._id = _id;
         this.dni = dni;
-        this.idnacional = idnacional;
-        this.ccdd = ccdd;
-        this.idsede = idsede;
-        this.idlocal = idlocal;
-        this.naula = naula;
         this.nombres = nombres;
         this.ape_paterno = ape_paterno;
         this.ape_materno = ape_materno;
-        this.prioridad = prioridad;
-    }
-
-    public Asistencia() {
-    }
-
-    public int getNaula() {
-        return naula;
-    }
-
-    public void setNaula(int naula) {
         this.naula = naula;
+        this.discapacidad = discapacidad;
+        this.prioridad = prioridad;
+        this.idnacional = idnacional;
+        this.idsede = idsede;
+        this.nom_sede = nom_sede;
+        this.ccdd = ccdd;
+        this.departamento = departamento;
+        this.idlocal = idlocal;
+        this.nom_local = nom_local;
+        this.direccion = direccion;
+    }
+
+    public Asistencia(){}
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public String getDni() {
@@ -45,38 +53,6 @@ public class Asistencia {
 
     public void setDni(String dni) {
         this.dni = dni;
-    }
-
-    public String getIdnacional() {
-        return idnacional;
-    }
-
-    public void setIdnacional(String idnacional) {
-        this.idnacional = idnacional;
-    }
-
-    public String getCcdd() {
-        return ccdd;
-    }
-
-    public void setCcdd(String ccdd) {
-        this.ccdd = ccdd;
-    }
-
-    public String getIdsede() {
-        return idsede;
-    }
-
-    public void setIdsede(String idsede) {
-        this.idsede = idsede;
-    }
-
-    public int getIdlocal() {
-        return idlocal;
-    }
-
-    public void setIdlocal(int idlocal) {
-        this.idlocal = idlocal;
     }
 
     public String getNombres() {
@@ -103,6 +79,22 @@ public class Asistencia {
         this.ape_materno = ape_materno;
     }
 
+    public int getNaula() {
+        return naula;
+    }
+
+    public void setNaula(int naula) {
+        this.naula = naula;
+    }
+
+    public String getDiscapacidad() {
+        return discapacidad;
+    }
+
+    public void setDiscapacidad(String discapacidad) {
+        this.discapacidad = discapacidad;
+    }
+
     public String getPrioridad() {
         return prioridad;
     }
@@ -111,19 +103,67 @@ public class Asistencia {
         this.prioridad = prioridad;
     }
 
-    public Map<String, Object> toMap(){
-        Map<String, Object> asistencia = new HashMap<>();
-        asistencia.put("idnacional", idnacional);
-        asistencia.put("ccdd", ccdd);
-        asistencia.put("idsede", idsede);
-        asistencia.put("idlocal", idlocal);
-        asistencia.put("nombres", nombres);
-        asistencia.put("ape_paterno", ape_paterno);
-        asistencia.put("ape_materno", ape_materno);
-        asistencia.put("prioridad", prioridad);
-        asistencia.put("naula", naula);
-        asistencia.put("check_registro_local", 0);
-        asistencia.put("check_registro_aula", 0);
-        return asistencia;
+    public int getIdnacional() {
+        return idnacional;
+    }
+
+    public void setIdnacional(int idnacional) {
+        this.idnacional = idnacional;
+    }
+
+    public String getIdsede() {
+        return idsede;
+    }
+
+    public void setIdsede(String idsede) {
+        this.idsede = idsede;
+    }
+
+    public String getNom_sede() {
+        return nom_sede;
+    }
+
+    public void setNom_sede(String nom_sede) {
+        this.nom_sede = nom_sede;
+    }
+
+    public String getCcdd() {
+        return ccdd;
+    }
+
+    public void setCcdd(String ccdd) {
+        this.ccdd = ccdd;
+    }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
+    }
+
+    public int getIdlocal() {
+        return idlocal;
+    }
+
+    public void setIdlocal(int idlocal) {
+        this.idlocal = idlocal;
+    }
+
+    public String getNom_local() {
+        return nom_local;
+    }
+
+    public void setNom_local(String nom_local) {
+        this.nom_local = nom_local;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 }

@@ -84,6 +84,8 @@ public class SQLConstantes {
     public static final String WHERE_CLAUSE_ID_SEDE = "idsede=?";
     public static final String WHERE_CLAUSE_ID_LOCAL = "idlocal=?";
     public static final String WHERE_CLAUSE_CAJA_TIPO = "tipo=?";
+    public static final String WHERE_CLAUSE_CAJA_NLADO = "nlado=?";
+
 
 
 }

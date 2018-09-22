@@ -1,5 +1,8 @@
 package pe.gob.inei.dmorales.firebasequerys;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Caja {
     private String _id;
     private String cod_barra_caja;
@@ -136,5 +139,16 @@ public class Caja {
 
     public void setAcl(int acl) {
         this.acl = acl;
+    }
+
+    public Map<String, Object> toMap(){
+        Map<String, Object> map = new HashMap<>();
+        map.put(SQLConstantes.cajas_idnacional, idnacional);
+        map.put(SQLConstantes.cajas_ccdd, ccdd);
+        map.put(SQLConstantes.cajas_idsede, idsede);
+        map.put(SQLConstantes.cajas_idlocal, idlocal);
+        map.put(SQLConstantes.cajas_tipo, tipo);
+        map.put("check_registro",0);
+        return map;
     }
 }

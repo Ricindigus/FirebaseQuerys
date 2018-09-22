@@ -1,7 +1,5 @@
 package pe.gob.inei.dmorales.firebasequerys;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresPermission;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,100 +9,62 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.Timestamp;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.WriteBatch;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-import io.opencensus.tags.TagContext;
 
 public class MainActivity extends AppCompatActivity {
 
 
-    EditText edtDni;
-    EditText edtNombre;
-    EditText edtEdad;
-    EditText edtDia;
-    EditText edtMes;
-    EditText edtAnio;
+    EditText edtIdLocal;
 
-    Button btnEnviar1;
-    Button btnEnviar2;
-    Button btnEnviar3;
+    Button btnCajas;
+    Button btnAsistencia;
+    Button btnInventario;
     Button btnResumen1;
     Button btnResumen2;
 
 
 
     Button btnActualizar;
-
-    Spinner spNombres;
-
     FirebaseFirestore db;
+    int idLocal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        edtDni = (EditText) findViewById(R.id.edt_dni);
-        edtNombre = (EditText) findViewById(R.id.edt_nombre);
-        edtDia = (EditText) findViewById(R.id.edt_dia);
-        edtMes = (EditText) findViewById(R.id.edt_mes);
-        edtAnio = (EditText) findViewById(R.id.edt_anio);
-        edtEdad = (EditText) findViewById(R.id.edt_edad);
-        spNombres = (Spinner) findViewById(R.id.sp_nombres);
-
-        btnEnviar1 = (Button) findViewById(R.id.btn_enviar1);
-        btnEnviar2 = (Button) findViewById(R.id.btn_enviar2);
-        btnEnviar3 = (Button) findViewById(R.id.btn_enviar3);
+        edtIdLocal = (EditText) findViewById(R.id.edt_idlocal);
+        btnCajas = (Button) findViewById(R.id.btn_cajas);
+        btnAsistencia = (Button) findViewById(R.id.btn_asistencia);
+        btnInventario = (Button) findViewById(R.id.btn_inventario);
         btnResumen1 = (Button) findViewById(R.id.btn_resumen1);
         btnResumen2 = (Button) findViewById(R.id.btn_resumen2);
-
+        btnActualizar = (Button) findViewById(R.id.btn_actualizar);
 
         db = FirebaseFirestore.getInstance();
 
-        btnActualizar = (Button) findViewById(R.id.btn_actualizar);
 
-        btnEnviar1.setOnClickListener(new View.OnClickListener() {
+        btnCajas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Data data =  new Data(MainActivity.this);
                 data.open();
-//                for (int i = 1; i <= 10 ; i++) {
-//                    final int c = i;
-//                    ArrayList<Caja> cajas = data.getAllCajasxSede(checkDigito(i));
-//                    WriteBatch batch = db.batch();
-//                    for (Caja caja: cajas){
-//                        batch.set(db.collection("cajas").document(caja.getCod_barra_caja()),caja.toMap());
-//                    }
-//                    batch.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
-//                        @Override
-//                        public void onSuccess(Void aVoid) {
-//                            Toast.makeText(MainActivity.this, "Subidos correctamente " + c, Toast.LENGTH_SHORT).show();
-//                        }
-//                    });
-//                }
-
-                ArrayList<Caja> cajas = data.getAllCajasxLocal(1);
+                ArrayList<Caja> cajas = data.getAllCajasxLocal(Integer.parseInt(edtIdLocal.getText().toString()));
                 WriteBatch batch = db.batch();
                 for (Caja caja: cajas){
-                    batch.set(db.collection("cajas").document(caja.getCod_barra_caja()),caja);
+                    String codCaja = caja.getCod_barra_caja().substring(0,caja.getCod_barra_caja().length()-2);
+                    batch.set(db.collection("cajas").document(codCaja),caja.toMap());
                 }
                 batch.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(MainActivity.this, "Subidos correctamente", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Subidos correctamente cajas", Toast.LENGTH_SHORT).show();
                     }
                 });
                 data.close();
@@ -112,49 +72,37 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        btnEnviar2.setOnClickListener(new View.OnClickListener() {
+        btnAsistencia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Data data =  new Data(MainActivity.this);
                 data.open();
-
-//                for (int i = 11; i <= 20 ; i++) {
-//                    final int c = i;
-//                    ArrayList<Caja> cajas = data.getAllCajasxSede(checkDigito(i));
-//                    if(i != 20){
-//                        WriteBatch batch = db.batch();
-//                        for (Caja caja: cajas){
-//                            batch.set(db.collection("cajas").document(caja.getCod_barra_caja()),caja.toMap());
-//                        }
-//                        batch.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
-//                            @Override
-//                            public void onSuccess(Void aVoid) {
-//                                Toast.makeText(MainActivity.this, "Subidos correctamente " + c, Toast.LENGTH_SHORT).show();
-//                            }
-//                        });
-//                    }else{
-//                        WriteBatch batchAux1 = db.batch();
-//                        for (int j = 0; j < 400 ; j++) {
-//                            batchAux1.set(db.collection("cajas").document(cajas.get(i).getCod_barra_caja()),cajas.get(i).toMap());
-//                        }
-//                        batchAux1.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
-//                            @Override
-//                            public void onSuccess(Void aVoid) {
-//                                Toast.makeText(MainActivity.this, "Subidos correctamente " + c + " parte 1", Toast.LENGTH_SHORT).show();
-//                            }
-//                        });
-//                        WriteBatch batchAux2 = db.batch();
-//                        for (int j = 400; j < cajas.size() ; j++) {
-//                            batchAux2.set(db.collection("cajas").document(cajas.get(i).getCod_barra_caja()),cajas.get(i).toMap());
-//                        }
-//                        batchAux2.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
-//                            @Override
-//                            public void onSuccess(Void aVoid) {
-//                                Toast.makeText(MainActivity.this, "Subidos correctamente " + c + " parte 2", Toast.LENGTH_SHORT).show();
-//                            }
-//                        });
-//                    }
-//                }
+                ArrayList<Asistencia> asistencias =  new ArrayList<>();
+                asistencias =  data.getAllAsistencia(Integer.parseInt(edtIdLocal.getText().toString()));
+                int n = asistencias.size() / 400;
+                for (int i = 1; i <= n ; i++) {
+                    final int c = i;
+                    WriteBatch batch = db.batch();
+                    for (int j = (i-1)*400; j < i*400 ; j++) {
+                        batch.set(db.collection("asistencia").document(asistencias.get(j).getDni()),asistencias.get(j).toMap());
+                    }
+                    batch.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(MainActivity.this, "Subidos correctamente asistencias" + c, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+                WriteBatch batch1 = db.batch();
+                for (int i = n*400 ; i < asistencias.size(); i++) {
+                    batch1.set(db.collection("asistencia").document(asistencias.get(i).getDni()),asistencias.get(i).toMap());
+                }
+                batch1.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(MainActivity.this, "Subidos correctamente asistencias completos", Toast.LENGTH_SHORT).show();
+                    }
+                });
                 data.close();
             }
         });
@@ -162,26 +110,37 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        btnEnviar3.setOnClickListener(new View.OnClickListener() {
+        btnInventario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Data data =  new Data(MainActivity.this);
                 data.open();
-//
-//                for (int i = 21; i <= 35 ; i++) {
-//                    final int c = i;
-//                    ArrayList<Caja> cajas = data.getAllCajasxSede(checkDigito(i));
-//                    WriteBatch batch = db.batch();
-//                    for (Caja caja: cajas){
-//                        batch.set(db.collection("cajas").document(caja.getCod_barra_caja()),caja.toMap());
-//                    }
-//                    batch.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
-//                        @Override
-//                        public void onSuccess(Void aVoid) {
-//                            Toast.makeText(MainActivity.this, "Subidos correctamente " + c, Toast.LENGTH_SHORT).show();
-//                        }
-//                    });
-//                }
+                ArrayList<Asistencia> asistencias =  new ArrayList<>();
+                asistencias =  data.getAllAsistencia(Integer.parseInt(edtIdLocal.getText().toString()));
+                int n = asistencias.size() / 400;
+                for (int i = 1; i <= n ; i++) {
+                    final int c = i;
+                    WriteBatch batch = db.batch();
+                    for (int j = (i-1)*400; j < i*400 ; j++) {
+                        batch.set(db.collection("inventario").document(asistencias.get(j).getDni()),asistencias.get(j));
+                    }
+                    batch.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(MainActivity.this, "Subidos correctamente inventarios" + c, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+                WriteBatch batch1 = db.batch();
+                for (int i = n*400 ; i < asistencias.size(); i++) {
+                    batch1.set(db.collection("inventario").document(asistencias.get(i).getDni()),asistencias.get(i));
+                }
+                batch1.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(MainActivity.this, "Subidos correctamente inventarios completos", Toast.LENGTH_SHORT).show();
+                    }
+                });
                 data.close();
             }
         });

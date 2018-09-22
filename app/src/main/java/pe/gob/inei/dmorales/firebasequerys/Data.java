@@ -186,10 +186,10 @@ public class Data {
 
     public ArrayList<Caja> getAllCajasxLocal(int idLocal){
         ArrayList<Caja> cajas = new ArrayList<Caja>();
-        String[] whereArgs = new String[]{String.valueOf(idLocal)};
+        String[] whereArgs = new String[]{String.valueOf(idLocal),"1"};
         Cursor cursor = null;
         try{
-            cursor = sqLiteDatabase.query(SQLConstantes.tablacajas, null, SQLConstantes.WHERE_CLAUSE_ID_LOCAL,whereArgs,null,null,null);
+            cursor = sqLiteDatabase.query(SQLConstantes.tablacajas, null, SQLConstantes.WHERE_CLAUSE_ID_LOCAL + " AND " + SQLConstantes.WHERE_CLAUSE_CAJA_NLADO,whereArgs,null,null,null);
             while(cursor.moveToNext()){
                 Caja caja =  new Caja();
                 caja.setCod_barra_caja(cursor.getString(cursor.getColumnIndex(SQLConstantes.cajas_cod_barra)));

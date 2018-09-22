@@ -1,5 +1,8 @@
 package pe.gob.inei.dmorales.firebasequerys;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Asistencia {
     private String _id;
     private String dni;
@@ -165,5 +168,21 @@ public class Asistencia {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public Map<String, Object> toMap(){
+        Map<String, Object> map = new HashMap<>();
+        map.put(SQLConstantes.asistencia_ape_paterno, ape_paterno);
+        map.put(SQLConstantes.asistencia_ape_materno, ape_materno);
+        map.put(SQLConstantes.asistencia_nombres, nombres);
+        map.put(SQLConstantes.asistencia_prioridad, prioridad);
+        map.put(SQLConstantes.asistencia_naula, naula);
+        map.put(SQLConstantes.asistencia_idnacional, idnacional);
+        map.put(SQLConstantes.asistencia_ccdd, ccdd);
+        map.put(SQLConstantes.asistencia_idlocal, idlocal);
+        map.put(SQLConstantes.asistencia_idsede, idsede);
+        map.put("check_registro_local", 0);
+        map.put("check_registro_aula", 0);
+        return map;
     }
 }

@@ -115,14 +115,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Data data =  new Data(MainActivity.this);
                 data.open();
-                ArrayList<Asistencia> asistencias =  new ArrayList<>();
-                asistencias =  data.getAllAsistencia(Integer.parseInt(edtIdLocal.getText().toString()));
-                int n = asistencias.size() / 400;
+                ArrayList<Inventario> inventarios =  new ArrayList<>();
+                inventarios =  data.getAllInventario(Integer.parseInt(edtIdLocal.getText().toString()));
+                int n = inventarios.size() / 400;
                 for (int i = 1; i <= n ; i++) {
                     final int c = i;
                     WriteBatch batch = db.batch();
                     for (int j = (i-1)*400; j < i*400 ; j++) {
-                        batch.set(db.collection("inventario").document(asistencias.get(j).getDni()),asistencias.get(j));
+                        batch.set(db.collection("inventario").document(inventarios.get(j).getCodigo()),inventarios.get(j).toMap());
                     }
                     batch.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -132,8 +132,8 @@ public class MainActivity extends AppCompatActivity {
                     });
                 }
                 WriteBatch batch1 = db.batch();
-                for (int i = n*400 ; i < asistencias.size(); i++) {
-                    batch1.set(db.collection("inventario").document(asistencias.get(i).getDni()),asistencias.get(i));
+                for (int i = n*400 ; i < inventarios.size(); i++) {
+                    batch1.set(db.collection("inventario").document(inventarios.get(i).getCodigo()),inventarios.get(i).toMap());
                 }
                 batch1.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

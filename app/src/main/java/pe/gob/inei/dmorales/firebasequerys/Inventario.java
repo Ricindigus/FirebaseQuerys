@@ -1,5 +1,8 @@
 package pe.gob.inei.dmorales.firebasequerys;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Inventario {
     private String id;
     private String codigo;
@@ -175,5 +178,21 @@ public class Inventario {
 
     public void setCodpagina(String codpagina) {
         this.codpagina = codpagina;
+    }
+
+    public Map<String, Object> toMap(){
+        Map<String, Object> map = new HashMap<>();
+        map.put(SQLConstantes.inventario_ccdd, ccdd);
+        map.put(SQLConstantes.inventario_idnacional, idnacional);
+        map.put(SQLConstantes.inventario_idsede, idsede);
+        map.put(SQLConstantes.inventario_idlocal, idlocal);
+        map.put(SQLConstantes.inventario_naula, naula);
+        map.put(SQLConstantes.inventario_tipo, tipo);
+        if (tipo == 3)
+            map.put(SQLConstantes.inventario_codpagina, codpagina);
+        else
+            map.put(SQLConstantes.inventario_dni, idlocal);
+        map.put("check_registro", 0);
+        return map;
     }
 }
